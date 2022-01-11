@@ -287,9 +287,11 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         buttons.append([InlineKeyboardButton("More Info", url=result[1][2])])
     if media == "AIRING" and sfw == "False":
         buttons.append([InlineKeyboardButton("More Info", url=result[1][0])])
-    name = (result[1] if len(result)>3 else result[1][0]).split("\n")[0].split(" ", 1)[1]
+    name = None
+    if media=="ANIME":
+        name = (result[1] if len(result)>3 else result[1][0]).split("\n")[0].split(" ", 1)[1]
     if auth is True and media!="SCHEDULED" and sfw == "False":
-        auth_btns = get_auth_btns(media, user, result[2], lspage=lspage, lsqry=lsqry)
+        auth_btns = get_auth_btns(media, user, result[2], name, lspage=lspage, lsqry=lsqry)
         buttons.append(auth_btns)
     else:
         if media=="ANIME" and sfw == "False":
