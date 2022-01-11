@@ -2,6 +2,7 @@ import json
 import requests
 import asyncio
 import os
+import re
 import shlex
 from time import time
 from datetime import datetime
@@ -286,9 +287,13 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         buttons.append([InlineKeyboardButton("More Info", url=result[1][2])])
     if media == "AIRING" and sfw == "False":
         buttons.append([InlineKeyboardButton("More Info", url=result[1][0])])
+    name = (result[1] if len(result)>3 else result[1][0]).split("\n")[0].split(" ", 1)[1]
     if auth is True and media!="SCHEDULED" and sfw == "False":
         auth_btns = get_auth_btns(media, user, result[2], lspage=lspage, lsqry=lsqry)
         buttons.append(auth_btns)
+    else:
+        if media=="ANIME" and sfw == "False":
+            buttons.append([InlineKeyboardButton("Download", switch_inline_query_current_chat=name)])    
     if len(result)>3:
         if result[3] == "None":
             if result[4] != "None":
@@ -314,7 +319,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
     return InlineKeyboardMarkup(buttons)
 
 
-def get_auth_btns(media, user, data, lsqry: str = None, lspage: int = None):
+def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None):
     btn = []
     qry = f"_{lsqry}" if lsqry  is not None else ""
     pg = f"_{lspage}" if lspage  is not None else ""
@@ -322,6 +327,8 @@ def get_auth_btns(media, user, data, lsqry: str = None, lspage: int = None):
         btn.append(InlineKeyboardButton(text="Add to Favs" if data[1] is not True else "Remove from Favs", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
     else:
         btn.append(InlineKeyboardButton(text="Add to Favs" if data[3] is not True else "Remove from Favs", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
+        if media=="ANIME":
+            btn.append([InlineKeyboardButton("Download", switch_inline_query_current_chat=name)])
         btn.append(InlineKeyboardButton(
             text="Add to List" if data[1] is False else "Update in List",
             callback_data=f"lsadd_{media}_{data[0]}{qry}{pg}_{user}" if data[1] is False else f"lsupdt_{media}_{data[0]}_{data[2]}{qry}{pg}_{user}"
