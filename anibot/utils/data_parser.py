@@ -32,7 +32,7 @@ async def get_ui_text(case):
 ANIME_TEMPLATE = """{name}
 
 **ID | MAL ID:** `{idm}` | `{idmal}`
-{bl}**{psrc}:** `{source}(c_flag)`
+{bl}**{psrc}:** `{source}({c_flag})`
 {bl}**{ptype}:** `{formats}`{avscd}{dura}{user_data}
 {status_air}{gnrs_}{tags_}
 
