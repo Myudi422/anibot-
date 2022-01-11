@@ -300,6 +300,17 @@ async def start_(client: anibot, message: Message, mdata: dict):
 I'm {bot.first_name} bot and I can help you get info on Animes, Mangas, Characters, Airings, Schedules, Watch Orders of Animes, etc
 For more info send /help in here.
 If you wish to use me in a group start me by /start{BOT_NAME} command after adding me in the group."""
+            reply_markup = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("Download Animes", switch_inline_query_current_chat="")
+                    ],
+                    [
+                        InlineKeyboardButton("Group", url="https://t.me/otakuindonew"),
+                        InlineKeyboardButton("Channel", url="https://t.me/Downloadanimebatch"),
+                    ]
+                ]
+            )
         )
     else:
         if not await (GROUPS.find_one({"id": gid})):
