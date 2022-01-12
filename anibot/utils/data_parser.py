@@ -981,8 +981,7 @@ async def get_anime(vars_, auth: bool = False, user: int = None, cid: int = None
             user_data = f"\n{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`"
     if data["title"]["english"] is not None:
         name = f"""◈ **{romaji}**
-◈ __{english}__
-◈ {native}"""
+◈ __{native}__ - (`{romaji}`)"""
     else:
         name = f"""◈ **{romaji}**
 ◈ {native}"""
@@ -1089,7 +1088,7 @@ async def get_anilist(qdb, page, auth: bool = False, user: int = None, cid: int 
             in_ls_score = f" and scored {in_list['score']}" if in_list['score']!=0 else ""
             user_data = f"\n{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`"
     name = f"""◈ **{romaji}**
-◈ `{native}`"""
+◈ {native} - `{romaji}` """
     prql, sql = "", ""
     for i in prqlsql:
         if i["relationType"] == "PREQUEL":
