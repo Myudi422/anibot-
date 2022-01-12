@@ -97,7 +97,7 @@ async def livechart_parser():
             if 'Episode' in i[0][1]:
                 clc[i[0][0]].append([i[0][1], i[1]])
             else:
-                msgscr.append([f"**New anime released on Crunchyroll**\n\n**Title:** {i[0][0]}", i[1]])
+                msgscr.append([f"**Anime Terbaru Rilis di Crunchyroll**\n\n**Judul:** {i[0][0]}", i[1]])
         else:
             fk.append(i)
     for i in list(clc.keys()):
@@ -105,7 +105,7 @@ async def livechart_parser():
         for ii in clc[i]:
             hmm.append(ii[0].split()[1])
         aep = [hmm[len(hmm)-1], hmm[0]] if len(hmm)!=1 and hmm[len(hmm)-1]!=hmm[0] else [hmm[0]]
-        msgscr.append([f"**New anime released on Crunchyroll**\n\n**Title:** {i}\n**Episode:** {aep[0] if len(aep)==1 or min(aep)==max(aep) else min(aep)+' - '+max(aep)}\n{'**EP Title:** '+ii[1] if len(ii)==3 else ''}", ii[1] if len(ii)!=3 else ii[2]])
+        msgscr.append([f"**Anime Terbaru Rilis di Crunchyroll**\n\n**Judul:** {i}\n**Episode:** {aep[0] if len(aep)==1 or min(aep)==max(aep) else min(aep)+' - '+max(aep)}\n{'**EP Title:** '+ii[1] if len(ii)==3 else ''}", ii[1] if len(ii)!=3 else ii[2]])
 #########################
 
 
@@ -130,7 +130,7 @@ async def livechart_parser():
             listlinks = ""
             for ii in ls[i]:
                 listlinks += '\n__'+ii[0]+'__: [Link]('+ii[1]+')'
-            msgssp.append(['**New anime uploaded on Subsplease**\n\n' + i + listlinks, 'https://nyaa.si/?q='+re.sub(r' ', '%20', re.sub(r'(\().*?(\))', r'', i).strip())])
+            msgssp.append(['**Anime terbaru Rilis di Subsplease**\n__(Untuk mirror file ini ke telegram, silahkan ketik `/leech (url)` nya digrup.__\n\n' + i + listlinks, 'https://nyaa.si/?q='+re.sub(r' ', '%20', re.sub(r'(\().*?(\))', r'', i).strip())])
 ##########################
 
 
@@ -176,7 +176,7 @@ async def livechart_parser():
     for i in msgssp:
         if await SP_GRPS.find_one() is not None:
             async for id_ in SP_GRPS.find():
-                btn = InlineKeyboardMarkup([[InlineKeyboardButton("Download", url=i[1])]])
+                btn = InlineKeyboardMarkup([[InlineKeyboardButton("Download", url=i[1])], [InlineKeyboardButton('Grup Mirror', url="https://t.me/+qJV3Z932_pZmOTQ1")]])
                 try:
                     await anibot.send_message(id_['_id'], i[0], reply_markup=btn)
                     await asyncio.sleep(1.5)
