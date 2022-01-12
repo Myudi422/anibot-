@@ -30,17 +30,15 @@ async def get_ui_text(case):
 #### Anilist part ####
 
 ANIME_TEMPLATE = """{name}
-
+─────── ∘°❉°∘ ───────
 **ID | MAL ID:** `{idm}` | `{idmal}`
-{bl}**{psrc}:** `{source}({c_flag})`
+{bl}**{psrc}:** [{c_flag}] - `{source}`
 {bl}**{ptype}:** `{formats}`{avscd}{dura}{user_data}
 {status_air}{gnrs_}{tags_}
-
-🎬 {trailer_link}
-📖 <a href="{surl}">Synopsis</a>
-📖 <a href="{url}">Official Site</a>
-<a href="https://t.me/{bot}?start=anirec_{idm}">Recommendations</a>
-
+──────────────────
+🎬 **{trailer_link}** | 📖 <a href="{surl}">**Sinopsis**</a>
+✨ <a href="{url}">**Anilist**</a> | 🔅 <a href="https://t.me/{bot}?start=anirec_{idm}">**Anime Mirip**</a>
+─────── ∘°❉°∘ ───────
 {additional}"""
 
 
