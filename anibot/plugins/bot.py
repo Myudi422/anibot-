@@ -296,18 +296,18 @@ async def start_(client: anibot, message: Message, mdata: dict):
                 return
         await client.send_message(
             gid,
-            text=f"""Kon'nichiwa!!!
-I'm {bot.first_name} bot and I can help you get info on Animes, Mangas, Characters, Airings, Schedules, Watch Orders of Animes, etc
-For more info send /help in here.
-If you wish to use me in a group start me by /start{BOT_NAME} command after adding me in the group.""",
+            text=f"""**Hallo😁!!!**
+Anda sudah terhubung dengan bot ccgnimex, untuk penggunaan lebih lanjut, **silahkan untuk ketik /help disini.**
+Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara,support kami & juga berdonasi agar server tetap hidup & kami terus memberikan kalian anime.
+Saya sarankan, Silahkan Daftar/Login Anilist terlebih dahulu (/auth), untuk menikmati fitur bot ini sepenuhnya.""",
             reply_markup = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("Download Animes", switch_inline_query_current_chat="")
+                        InlineKeyboardButton("🔍 Cari di Database", switch_inline_query_current_chat="")
                     ],
                     [
-                        InlineKeyboardButton("Group", url="https://t.me/otakuindonew"),
-                        InlineKeyboardButton("Channel", url="https://t.me/Downloadanimebatch"),
+                        InlineKeyboardButton("📩 Lapor/REQ", url="https://t.me/otakuindonew"),
+                        InlineKeyboardButton("💠 Versi Batch", url="https://t.me/downloadanimebatch/302"),
                     ]
                 ]
             )
@@ -341,10 +341,10 @@ async def help_(client: anibot, message: Message, mdata: dict):
         )
         return
     buttons = help_btns(id_)
-    text='''This is a small guide on how to use me\n\n**Basic Commands:**\nUse /ping or !ping cmd to check if bot is online
-Use /start or !start cmd to start bot in group or pm
-Use /help or !help cmd to get interactive help on available bot cmds
-Use /feedback cmd to contact bot owner'''
+    text='''Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online
+Gunakan /start atau !start cmd untuk memulai bot di grup atau pm
+Gunakan /help atau !help cmd untuk mendapatkan bantuan interaktif pada cmd bot yang tersedia
+Gunakan /feedback cmd untuk menghubungi pemilik bot.\n'''
     if id_ in OWNER:
         await client.send_message(gid, text=text, reply_markup=buttons)
         await client.send_message(
@@ -385,10 +385,10 @@ async def help_list_parser(client: anibot, cq: CallbackQuery, cdata: dict):
     await cq.answer()
     user = cdata['data'].split("_")[1]
     buttons = help_btns(user)
-    text='''This is a small guide on how to use me\n\n**Basic Commands:**\nUse /ping or !ping cmd to check if bot is online
-Use /start or !start cmd to start bot in group or pm
-Use /help or !help cmd to get interactive help on available bot cmds
-Use /feedback cmd to contact bot owner'''
+    text='''Ini adalah panduan kecil tentang cara menggunakan bot\n\n**Perintah Dasar:**\nGunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online
+Gunakan /start atau !start cmd untuk memulai bot di grup atau pm
+Gunakan /help atau !help cmd untuk mendapatkan bantuan interaktif pada cmd bot yang tersedia
+Gunakan /feedback cmd untuk menghubungi pemilik bot.'''
     await cq.edit_message_text(text=text, reply_markup=buttons)
 
 
