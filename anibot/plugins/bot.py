@@ -307,11 +307,8 @@ Saya sarankan, Silahkan Daftar/Login Anilist terlebih dahulu (/auth), untuk meni
                     ],
                     [
                         InlineKeyboardButton("📩 Lapor/REQ", url="https://t.me/otakuindonew"),
-                        InlineKeyboardButton("💠 Versi Batch", url="https://t.me/downloadanimebatch/302"),
+                        InlineKeyboardButton("💠 Versi Batch", url="https://t.me/downloadanimebatch/302")
                     ],
-                    [
-                        InlineKeyboardButton("🔴 Live Streaming Anime 24/7", url="https://t.me/downloadanimebatch?livestream")
-                    ]
                 ]
             )
         )
