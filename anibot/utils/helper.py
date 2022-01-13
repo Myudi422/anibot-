@@ -266,7 +266,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
     pg = f"_{lspage}" if lspage is not None else ""
     if media == "ANIME" and sfw == "False":
         buttons.append([
-            InlineKeyboardButton(text="karakter", callback_data=f"char_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_1_{user}"),
+            InlineKeyboardButton(text="Karakter", callback_data=f"char_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_1_{user}"),
             InlineKeyboardButton(text="Deskripsi", callback_data=f"desc_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
             InlineKeyboardButton(text="Daftar Seri", callback_data=f"ls_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
         ])
@@ -310,13 +310,13 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
                 buttons.append([InlineKeyboardButton(text="Prequel", callback_data=f"btn_{result[3]}_{str(auth)}_{user}")])
     if (lsqry is not None) and (len(result)!=1) and (result[1][1]!=1):
         if lspage == 1:
-            buttons.append([InlineKeyboardButton(text="Next", callback_data=f"page_{media}{qry}_{int(lspage)+1}_{str(auth)}_{user}")])
+            buttons.append([InlineKeyboardButton(text="➡️", callback_data=f"page_{media}{qry}_{int(lspage)+1}_{str(auth)}_{user}")])
         elif lspage == result[1][1]:
-            buttons.append([InlineKeyboardButton(text="Prev", callback_data=f"page_{media}{qry}_{int(lspage)-1}_{str(auth)}_{user}")])
+            buttons.append([InlineKeyboardButton(text="⬅️", callback_data=f"page_{media}{qry}_{int(lspage)-1}_{str(auth)}_{user}")])
         else:
             buttons.append([
-                InlineKeyboardButton(text="Prev", callback_data=f"page_{media}{qry}_{int(lspage)-1}_{str(auth)}_{user}"),
-                InlineKeyboardButton(text="Next", callback_data=f"page_{media}{qry}_{int(lspage)+1}_{str(auth)}_{user}"),
+                InlineKeyboardButton(text="⬅️", callback_data=f"page_{media}{qry}_{int(lspage)-1}_{str(auth)}_{user}"),
+                InlineKeyboardButton(text="➡️", callback_data=f"page_{media}{qry}_{int(lspage)+1}_{str(auth)}_{user}"),
             ])
     return InlineKeyboardMarkup(buttons)
 
@@ -326,13 +326,13 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
     qry = f"_{lsqry}" if lsqry  is not None else ""
     pg = f"_{lspage}" if lspage  is not None else ""
     if media=="CHARACTER":
-        btn.append(InlineKeyboardButton(text="Add to Fav" if data[1] is not True else "Rmv from Favs", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
+        btn.append(InlineKeyboardButton(text="➕ Ke Fav" if data[1] is not True else "➖ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
     else:
-        btn.append(InlineKeyboardButton(text="Add to Fav" if data[3] is not True else "Rmv from Favs", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
+        btn.append(InlineKeyboardButton(text="➕ Ke Fav" if data[3] is not True else "➖ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
         if media=="ANIME":
             btn.append(InlineKeyboardButton("Download", switch_inline_query_current_chat=name))
         btn.append(InlineKeyboardButton(
-            text="Add to List" if data[1] is False else "Update in List",
+            text="Add to List" if data[1] is False else "Update List",
             callback_data=f"lsadd_{media}_{data[0]}{qry}{pg}_{user}" if data[1] is False else f"lsupdt_{media}_{data[0]}_{data[2]}{qry}{pg}_{user}"
             ))
     return btn
