@@ -37,7 +37,7 @@ ANIME_TEMPLATE = """{name}
 {status_air}{gnrs_}{tags_}
 ──────────────────
 🎬 **{trailer_link}** | 📖 <a href="{surl}">**Sinopsis**</a>
-✨ <a href="{url}">**Anilist**</a> | 🔅 <a href="https://t.me/{bot}?start=anirec_{idm}">**Anime Mirip**</a>
+✨ <a href="{url}">**Anilist**</a> | 🔅 <a href="https://t.me/{bot}?start=anirec_{idm}">**Anime Serupa**</a>
 ─────── ∘°❉°∘ ───────
 {additional}"""
 
@@ -121,7 +121,7 @@ FAV_ANI_QUERY = """
 query ($id: Int, $page: Int) {
   User (id: $id) {
     favourites {
-      anime (page: $page, perPage: 10) {
+      anime (page: $page, perPage: 30) {
         pageInfo {
           lastPage
         }
@@ -143,7 +143,7 @@ FAV_MANGA_QUERY = """
 query ($id: Int, $page: Int) {
   User (id: $id) {
     favourites {
-      manga (page: $page, perPage: 10) {
+      manga (page: $page, perPage: 30) {
         pageInfo {
           lastPage
         }
@@ -165,7 +165,7 @@ FAV_CHAR_QUERY = """
 query ($id: Int, $page: Int) {
   User (id: $id) {
     favourites {
-      characters (page: $page, perPage: 10) {
+      characters (page: $page, perPage: 30) {
         pageInfo {
           lastPage
         }
@@ -554,7 +554,7 @@ fragment kek on ListActivity {
 
 TOP_QUERY = """
 query ($gnr: String, $page: Int) {
-  Page (perPage: 15, page: $page) {
+  Page (perPage: 50, page: $page) {
     pageInfo {
       lastPage
       total
@@ -570,7 +570,7 @@ query ($gnr: String, $page: Int) {
 
 TOPT_QUERY = """
 query ($gnr: String, $page: Int) {
-  Page (perPage: 15, page: $page) {
+  Page (perPage: 50, page: $page) {
     pageInfo {
       lastPage
       total
@@ -586,7 +586,7 @@ query ($gnr: String, $page: Int) {
 
 ALLTOP_QUERY = """
 query ($page: Int) {
-  Page (perPage: 15, page: $page) {
+  Page (perPage: 70, page: $page) {
     pageInfo {
       lastPage
       total
@@ -815,7 +815,7 @@ async def get_top_animes(gnr: str, page, user):
     data = result["data"]["Page"]
     for i in data['media']:
         msg += f"⚬ `{i['title']['romaji']}`\n"
-    msg += f"\nTotal available animes: `{data['pageInfo']['total']}`"
+    msg += f"\nTotal Anime Tersedia: `{data['pageInfo']['total']}`"
     btn = []
     if int(page)==1:
         if int(data['pageInfo']['lastPage'])!=1:
@@ -1187,7 +1187,7 @@ async def browse_(qry: str):
         if i['format'] in ['TV', 'MOVIE', 'ONA']:
             ls.append('• `' + i['title']['romaji'] + '`')
     out = f'{qry.capitalize()} animes in {s} {y}:\n\n'
-    return out + "\n".join(ls[:20])
+    return out + "\n".join(ls[:100])
 
 
 async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = None):
