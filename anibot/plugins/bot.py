@@ -388,7 +388,8 @@ async def help_list_parser(client: anibot, cq: CallbackQuery, cdata: dict):
     text='''Ini adalah panduan kecil tentang cara menggunakan bot\n\n**Perintah Dasar:**\nGunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online
 Gunakan /start atau !start cmd untuk memulai bot di grup atau pm
 Gunakan /help atau !help cmd untuk mendapatkan bantuan interaktif pada cmd bot yang tersedia
-Gunakan /feedback cmd untuk menghubungi pemilik bot.'''
+Gunakan /feedback cmd untuk menghubungi pemilik bot.
+Untuk Mendownload Video dari YT, Silahkan gunakan @vid dan cari video yang ingin didownload, lalu kirim link yt nya kesini/grup.'''
     await cq.edit_message_text(text=text, reply_markup=buttons)
 
 
