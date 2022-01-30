@@ -454,7 +454,7 @@ async def favourites_cmd(client: Client, message: Message, mdata: dict):
             ]
         ]
     )
-    await client.send_photo(gid, result[0], caption="Choose one of the below options", reply_markup=btn)
+    await client.send_photo(gid, result[0], caption="Pilih salah satu opsi di bawah ini", reply_markup=btn)
 
 
 @anibot.on_message(filters.command(["logout", f"logout{BOT_NAME}"], prefixes=trg))
@@ -867,7 +867,7 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     q = cdata['data'].split("_")
     kek, query, ctgry = q[0], q[1], q[2]
     info = (
-        "<b>Description</b>"
+        "<b>Deskripsi</b>"
         if kek == "desc"
         else "<b>Series List</b>"
         if kek == "ls"
