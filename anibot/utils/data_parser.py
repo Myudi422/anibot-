@@ -1295,7 +1295,7 @@ async def get_airing(qry, ind: int, auth: bool = False, user: int = None):
     out += f"\n**Status:** `{status}`\n"
     out += user_data
     if air_on:
-        out += f"Airing Episode `{episode}{th}` in `{air_on}`"
+        out += f"Episode `{episode}{th}` Akan rilis dalam `{air_on}`"
     site = data["siteUrl"]
     return [coverImg, out], [site, result["data"]["Page"]["pageInfo"]["total"]], [mid, in_ls, in_ls_id, isfav]
 

@@ -246,10 +246,10 @@ def make_it_rw(time_stamp):
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
     tmp = (
-        ((str(days) + " Days, ") if days else "")
-        + ((str(hours) + " Hours, ") if hours else "")
-        + ((str(minutes) + " Minutes, ") if minutes else "")
-        + ((str(seconds) + " Seconds, ") if seconds else "")
+        ((str(days) + " Hari, ") if days else "")
+        + ((str(hours) + " Jam, ") if hours else "")
+        + ((str(minutes) + " Menit, ") if minutes else "")
+        + ((str(seconds) + " Detik, ") if seconds else "")
         + ((str(milliseconds) + " ms, ") if milliseconds else "")
     )
     return tmp[:-2]
