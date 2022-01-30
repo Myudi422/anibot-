@@ -839,7 +839,7 @@ async def get_user_favourites(id_, user, req, page, sighs):
         user=int(user)
     )
     data = result["data"]["User"]["favourites"]["anime" if req=="ANIME" else "characters" if req=="CHAR" else "manga"]
-    msg = "Favourite Animes:\n\n" if req=="ANIME" else "Favourite Characters:\n\n" if req=="CHAR" else "Favourite Manga:\n\n"
+    msg = "Daftar Anime Favorit Saya:\n\n" if req=="ANIME" else "Daftar Karakter Favorit Saya:\n\n" if req=="CHAR" else "Daftar Manga Favorit Saya:\n\n"
     for i in data["edges"]:
         msg += f"⚬ [{i['node']['title']['romaji'] if req!='CHAR' else i['node']['name']['full']}]({i['node']['siteUrl']})\n"
     btn = []
@@ -1327,19 +1327,19 @@ async def get_user(vars_, req, user):
     anime = data['statistics']['anime']
     manga = data['statistics']['manga']
     stats = f"""
-**Anime Stats**:
+**Statistik Menonton Anime:**:
 
-Total Anime Watched: `{anime['count']}`
-Total Episode Watched: `{anime['episodesWatched']}`
-Total Time Spent: `{anime['minutesWatched']}`
-Average Score: `{anime['meanScore']}`
+Total Anime Ditonton: `{anime['count']}`
+Total Episode Ditonton: `{anime['episodesWatched']}`
+Total Waktu yang Dihabiskan: `{anime['minutesWatched']}` Menit
+Memberi Skor rata - rata: `{anime['meanScore']}`
 
-**Manga Stats**:
+**Statistik Membaca Manga**:
 
-Total Manga Read: `{manga['count']}`
-Total Chapters Read: `{manga['chaptersRead']}`
-Total Volumes Read: `{manga['volumesRead']}`
-Average Score: `{manga['meanScore']}`
+Total Manga Dibaca: `{manga['count']}`
+Total Chapters Dibaca: `{manga['chaptersRead']}`
+Total Volume/Bab Dibaca: `{manga['volumesRead']}`
+Memberi Skor rata - rata: `{manga['meanScore']}`
 """ 
     btn = []
     if not "user" in req:
