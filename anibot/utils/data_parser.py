@@ -989,8 +989,8 @@ async def get_anime(vars_, auth: bool = False, user: int = None, cid: int = None
     for i in prqlsql:
         if i["relationType"] == "PREQUEL":
             pname = (
-                i["node"]["title"]["english"]
-                if i["node"]["title"]["english"] is not None
+                i["node"]["title"]["romaji"]
+                if i["node"]["title"]["romaji"] is not None
                 else i["node"]["title"]["romaji"]
             )
             prql += f"**{text[10]}:** `{pname}`\n"
@@ -999,8 +999,8 @@ async def get_anime(vars_, auth: bool = False, user: int = None, cid: int = None
     for i in prqlsql:
         if i["relationType"] == "SEQUEL":
             sname = (
-                i["node"]["title"]["english"]
-                if i["node"]["title"]["english"] is not None
+                i["node"]["title"]["romaji"]
+                if i["node"]["title"]["romaji"] is not None
                 else i["node"]["title"]["romaji"]
             )
             sql += f"**{text[9]}:** `{sname}`\n"
@@ -1093,8 +1093,8 @@ async def get_anilist(qdb, page, auth: bool = False, user: int = None, cid: int 
     for i in prqlsql:
         if i["relationType"] == "PREQUEL":
             pname = (
-                i["node"]["title"]["english"]
-                if i["node"]["title"]["english"] is not None
+                i["node"]["title"]["romaji"]
+                if i["node"]["title"]["romaji"] is not None
                 else i["node"]["title"]["romaji"]
             )
             prql += f"**{text[10]}:** `{pname}`\n"
@@ -1102,8 +1102,8 @@ async def get_anilist(qdb, page, auth: bool = False, user: int = None, cid: int 
     for i in prqlsql:
         if i["relationType"] == "SEQUEL":
             sname = (
-                i["node"]["title"]["english"]
-                if i["node"]["title"]["english"] is not None
+                i["node"]["title"]["romaji"]
+                if i["node"]["title"]["romaji"] is not None
                 else i["node"]["title"]["romaji"]
             )
             sql += f"**{text[9]}:** `{sname}`\n"
