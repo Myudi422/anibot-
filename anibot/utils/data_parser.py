@@ -1203,7 +1203,6 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
     romaji = data["title"]["romaji"]
     english = data["title"]["english"]
     native = data["title"]["native"]
-    Synonyms = data["title"]["Synonyms"]
     status = data.get("status")
     synopsis = data.get("description")
     description = synopsis[:500]
@@ -1236,7 +1235,7 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
             in_ls_score = f" and scored {in_list['score']}" if in_list['score']!=0 else ""
             user_data = f"{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`\n"
     name = f"""[{c_flag}]**{romaji}**
-        __{english}__ - {Synonyms}
+        __{english}__
         {native}"""
     if english  is None:
         name = f"""[{c_flag}]**{romaji}**
