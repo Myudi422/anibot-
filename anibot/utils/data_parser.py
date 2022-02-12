@@ -1209,7 +1209,7 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
     description_s = ""
     if len(synopsis) > 300:
         description += f"..."
-        description_s = f"[**Info lebih lanjut**](https://t.me/{BOT_NAME.replace('@', '')}/?start=des_ANI_{idm}_desc)"
+        description_s = f"[>> Info lebih lanjut <<](https://t.me/{BOT_NAME.replace('@', '')}/?start=des_ANI_{idm}_desc)"
     volumes = data.get("volumes")
     chapters = data.get("chapters")
     score = data.get("averageScore")
