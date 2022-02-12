@@ -1209,7 +1209,7 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
     description_s = ""
     if len(synopsis) > 300:
         description += f"..."
-        description_s = f"[Info lebih lanjut](https://t.me/{BOT_NAME.replace('@', '')}/?start=des_ANI_{idm}_desc)"
+        description_s = f"[**Info lebih lanjut**](https://t.me/{BOT_NAME.replace('@', '')}/?start=des_ANI_{idm}_desc)"
     volumes = data.get("volumes")
     chapters = data.get("chapters")
     score = data.get("averageScore")
@@ -1250,7 +1250,7 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
     finals_ += user_data
     if os.environ.get("PREFERRED_LANGUAGE"):
         description = tr.translate(description, lang_tgt=os.environ.get("PREFERRED_LANGUAGE"))
-    finals_ += f"\n**{text[12]}**: `{description}`\n\n{description_s} - @DownloadAnimeBatch"
+    finals_ += f"\n**{text[12]}**: {description}\n{description_s}"
     pic = f"https://img.anili.st/media/{idm}"
     return pic, [finals_, result["data"]["Page"]["pageInfo"]["total"], url], [idm, in_ls, in_ls_id, isfav, str(adult)]
 
