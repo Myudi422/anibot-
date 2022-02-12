@@ -1087,7 +1087,7 @@ async def get_anilist(qdb, page, auth: bool = False, user: int = None, cid: int 
             in_ls_stts = in_list['status']
             in_ls_score = f" and scored {in_list['score']}" if in_list['score']!=0 else ""
             user_data = f"\n{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`"
-    name = f"""◈ `{romaji}`
+    name = f"""◈ [`{romaji}`]
 ◈ {native} - **{english}** """
     prql, sql = "", ""
     for i in prqlsql:
