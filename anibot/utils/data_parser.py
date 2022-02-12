@@ -18,7 +18,7 @@ async def uidata(id_):
     data = await GUI.find_one({'_id': str(id_)})
     if data is not None:
         return str(data['bl'])+" ", data['cs']
-    return ["➤ ", "UPPER"]
+    return ["⋟ ", "UPPER"]
 
 async def get_ui_text(case):
     if case=="UPPER":
@@ -1207,9 +1207,9 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
     synopsis = data.get("description")
     description = synopsis[:500]
     description_s = ""
-    if len(synopsis) > 500:
+    if len(synopsis) > 300:
         description += f"..."
-        description_s = f"[For more info click here](https://t.me/{BOT_NAME.replace('@', '')}/?start=des_ANI_{idm}_desc)"
+        description_s = f"[Info lebih lanjut](https://t.me/{BOT_NAME.replace('@', '')}/?start=des_ANI_{idm}_desc)"
     volumes = data.get("volumes")
     chapters = data.get("chapters")
     score = data.get("averageScore")
@@ -1234,12 +1234,11 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
             in_ls_stts = in_list['status']
             in_ls_score = f" and scored {in_list['score']}" if in_list['score']!=0 else ""
             user_data = f"{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`\n"
-    name = f"""[{c_flag}]**{romaji}**
-        __{english}__
-        {native}"""
+    name = f"""[{c_flag}] **{romaji}**
+◈ __{english}__ - {native}"""
     if english  is None:
-        name = f"""[{c_flag}]**{romaji}**
-        {native}"""
+        name = f"""[{c_flag}] **{romaji}**
+◈ {native}"""
     finals_ = f"{name}\n\n"
     finals_ += f"{bl}**ID:** `{idm}`\n"
     finals_ += f"{bl}**{text[6]}:** `{status}`\n"
