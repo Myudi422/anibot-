@@ -1234,10 +1234,10 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
             in_ls_stts = in_list['status']
             in_ls_score = f" and scored {in_list['score']}" if in_list['score']!=0 else ""
             user_data = f"{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`\n"
-    name = f"""[{c_flag}] **{romaji}**
+    name = f"""◈ [{c_flag}] **{romaji}**
 ◈ __{english}__ - {native}"""
     if english  is None:
-        name = f"""[{c_flag}] **{romaji}**
+        name = f"""◈ [{c_flag}] **{romaji}**
 ◈ {native}"""
     finals_ = f"{name}\n\n"
     finals_ += f"{bl}**ID:** `{idm}`\n"
