@@ -319,7 +319,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
                 InlineKeyboardButton(text="⬅️", callback_data=f"page_{media}{qry}_{int(lspage)-1}_{str(auth)}_{user}"),
                 InlineKeyboardButton(text="➡️", callback_data=f"page_{media}{qry}_{int(lspage)+1}_{str(auth)}_{user}"),
             ])
-            btn.append(InlineKeyboardButton("View More", url=f"https://t.me/ccgnimeX_bot/?start=request_{qry}"))
+            buttons.append(InlineKeyboardButton("View More", url=f"https://t.me/ccgnimeX_bot/?start=request_{qry}"))
     return InlineKeyboardMarkup(buttons)
 
 
