@@ -331,7 +331,7 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
     else:
         btn.append(InlineKeyboardButton(text="➕ Ke Fav" if data[3] is not True else "➖ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
         if media=="ANIME":
-            btn.append(InlineKeyboardButton("View More", f"https://t.me/{BOT}/?start=request_{qry}",
+            btn.append(InlineKeyboardButton("View More", f"https://t.me/ccgnimeX_bot/?start=request_{qry}",
                         "url",
                     ))
             btn.append(InlineKeyboardButton("Download", switch_inline_query_current_chat=name))
