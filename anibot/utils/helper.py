@@ -319,6 +319,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
                 InlineKeyboardButton(text="⬅️", callback_data=f"page_{media}{qry}_{int(lspage)-1}_{str(auth)}_{user}"),
                 InlineKeyboardButton(text="➡️", callback_data=f"page_{media}{qry}_{int(lspage)+1}_{str(auth)}_{user}"),
             ])
+            btn.append(InlineKeyboardButton("View More", url=f"https://t.me/ccgnimeX_bot/?start=request_{qry}"))
     return InlineKeyboardMarkup(buttons)
 
 
@@ -332,7 +333,7 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
         btn.append(InlineKeyboardButton(text="➕ Ke Fav" if data[3] is not True else "➖ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
         if media=="ANIME":
             btn.append(InlineKeyboardButton("Download", switch_inline_query_current_chat=name))
-            btn.append(InlineKeyboardButton("View More", url=f"https://t.me/ccgnimeX_bot/?start=request_{qry}"))
+            
         btn.append(InlineKeyboardButton(
             text="Add to List" if data[1] is False else "Update List",
             callback_data=f"lsadd_{media}_{data[0]}{qry}{pg}_{user}" if data[1] is False else f"lsupdt_{media}_{data[0]}_{data[2]}{qry}{pg}_{user}"
