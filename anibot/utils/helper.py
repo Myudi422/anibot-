@@ -4,7 +4,6 @@ import asyncio
 import os
 import re
 import shlex
-from .data_parser import id
 from time import time
 from datetime import datetime
 from os.path import basename
@@ -336,9 +335,6 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
             text="Add to List" if data[1] is False else "Update List",
             callback_data=f"lsadd_{media}_{data[0]}{qry}{pg}_{user}" if data[1] is False else f"lsupdt_{media}_{data[0]}_{data[2]}{qry}{pg}_{user}"
             ))
-        btn.append(InlineKeyboardButton("Request",
-                        f"https://t.me/{bot}?start=request_{idm}",
-                        "url",))
     return btn
 
 
