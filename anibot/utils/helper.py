@@ -5,6 +5,7 @@ import os
 import re
 import shlex
 from time import time
+from .. import BOT_NAME
 from datetime import datetime
 from os.path import basename
 from typing import Tuple, Optional
