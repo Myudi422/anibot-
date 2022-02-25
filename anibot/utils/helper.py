@@ -336,15 +336,7 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
             text="Add to List" if data[1] is False else "Update List",
             callback_data=f"lsadd_{media}_{data[0]}{qry}{pg}_{user}" if data[1] is False else f"lsupdt_{media}_{data[0]}_{data[2]}{qry}{pg}_{user}"
             ))
-        keyboard = [
-                [
-                    (
-                        lang.view_more_button,
-                        f"https://t.me/ccgnimex_bot/?start=anime_{qry}",
-                        "url",
-                    )
-                ],
-            ]
+        btn.append([InlineKeyboardButton(text="View More", url=f"https://t.me/{BOT_NAME}/?start=request_{qry}")])
                 
     return btn
 
