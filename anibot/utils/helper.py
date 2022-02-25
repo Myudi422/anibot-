@@ -6,7 +6,6 @@ import re
 import shlex
 from time import time
 from .. import BOT_NAME
-from .data_parser import idm
 from datetime import datetime
 from os.path import basename
 from typing import Tuple, Optional
@@ -26,6 +25,7 @@ PIC_DB = get_collection("PIC_DB")
 USER_JSON = {}
 USER_WC = {}
 ANON_JSON = {}
+idm = data.get("id")
 
 
 ###### credits to @deleteduser420 on tg, code from USERGE-X ######
