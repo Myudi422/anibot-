@@ -894,14 +894,14 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     if len(result) > 1000:
         result = result[:940] + "..."
         if spoiler is False:
-            result += "\n\nFor more info click below given button"
+            result += "\n\nUntuk lebih lanjutnya, silahkan klik tombol dibawah ini"
             button.append([InlineKeyboardButton(text="More Info", url=f"https://t.me/{bot}/?start=des_{ctgry}_{query}_{kek}"),
             ])
             
     add_ = ""
     user = q.pop()
     if kek=='desc':
-        button.append([InlineKeyboardButton(text="Request & Lapor", url=f"https://t.me/ccgnimeX_bot/?start=request_{query}"),
+        button.append([InlineKeyboardButton(text="Request & Lapor", url=f"https://t.me/ccgnimeX_bot/?start=menu_{query}"),
             ])
     if kek=='char':
         btndata = rjsdata[2]
