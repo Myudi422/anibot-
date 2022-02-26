@@ -297,24 +297,7 @@ async def start_(client: anibot, message: Message, mdata: dict):
                 k = await AUTH_USERS.find_one({'_id': ObjectId(qry)})
                 await code_cmd(k['code'], message)
                 return
-        await client.send_message(
-            gid,
-            text=f"""**Hallo😁!!!**
-untuk penggunaan lebih lanjut, **silahkan untuk ketik /help disini.** \n
-Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara,support kami & juga berdonasi agar server tetap hidup & kami terus memberikan kalian anime.\n
-Saya sarankan, Silahkan Daftar/Login Anilist terlebih dahulu (/auth), untuk menikmati fitur bot ini sepenuhnya.""",
-            reply_markup = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("🔍 Cari di Database", switch_inline_query_current_chat="")
-                    ],
-                    [
-                        InlineKeyboardButton("📩 Lapor/REQ", url="https://t.me/otakuindonew"),
-                        InlineKeyboardButton("💠 Channel", url="https://t.me/downloadanimebatch/302")
-                    ],
-                ]
-            )
-        )
+        
     else:
         if not await (GROUPS.find_one({"id": gid})):
             try:
