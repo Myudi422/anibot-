@@ -790,7 +790,7 @@ async def get_recommendations(id_):
         return "Tidak ada Rekomendasi yang tersedia terkait dengan anime yang diberikan!!!"
     outstr = "Rekomendasi anime terkait:\n\n"
     for i in rc_ls:
-        outstr += f"**{i[0]}**\n ➥[Synopsis](https://t.me/{BOT_NAME.replace('@', '')}?start=anime_{i[1]})\n ➥[Official Site]({i[2]})\n\n"
+        outstr += f"**{i[0]}**\n ➥[Synopsis](https://t.me/{BOT_NAME.replace('@', '')}?start=anime_{i[1]})\n \n ➥[Request](https://t.me/{BOT_NAME.replace('@', '')}?start=menu_{i[1]})\n ➥[Official Site]({i[2]})\n\n"
     return outstr
 
 
