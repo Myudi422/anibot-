@@ -263,6 +263,9 @@ async def start_(client: anibot, message: Message, mdata: dict):
             if deep_cmd=="help":
                 await help_(client, message)
                 return
+            if deep_cmd=="request":
+                await help_(client, message)
+                return    
             if deep_cmd=="auth":
                 await auth_link_cmd(client, message)
                 return
