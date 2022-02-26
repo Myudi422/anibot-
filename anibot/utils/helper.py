@@ -323,7 +323,8 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
     return InlineKeyboardMarkup(buttons)
 
 
-def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None):
+def get_auth_btns(media, user, data, name,  result: list, lsqry: str = None, lspage: int = None):
+    
     btn = []
     qry = f"_{lsqry}" if lsqry  is not None else ""
     pg = f"_{lspage}" if lspage  is not None else ""
@@ -339,7 +340,7 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
             callback_data=f"lsadd_{media}_{data[0]}{qry}{pg}_{user}" if data[1] is False else f"lsupdt_{media}_{data[0]}_{data[2]}{qry}{pg}_{user}"
             ))
         if media=="ANIME":
-            btn.append(InlineKeyboardButton("View More", url=f"https://t.me/ccgnimeX_bot/?start=request_{qry}"))    
+            btn.append(InlineKeyboardButton("View More", url=f"https://t.me/ccgnimeX_bot/?start=request_{result[2][0]}{qry}{pg}"))    
                 
     return btn
 
