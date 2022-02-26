@@ -900,6 +900,9 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
             
     add_ = ""
     user = q.pop()
+    if kek=='desc':
+        button.append([InlineKeyboardButton(text="Request & Lapor", url=f"https://t.me/ccgnimeX_bot/?start=request_{query}"),
+            ])
     if kek=='char':
         btndata = rjsdata[2]
         if btndata['lastPage']!=1:
@@ -919,8 +922,7 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
         else f"page_ANIME{lsqry}{lspg}_{q[5]}_{user}" if ctgry=="ANI"
         else f"page_CHARACTER{lsqry}{lspg}_{q[5]}_{user}"
     )
-    button.append([InlineKeyboardButton(text="Request & Lapor", url=f"https://t.me/ccgnimeX_bot/?start=request_{query}"),
-            ])
+
     button.append([InlineKeyboardButton(text="Back", callback_data=cbd)])
     await cq.edit_message_media(InputMediaPhoto(pic, caption=msg), reply_markup=InlineKeyboardMarkup(button))
 
