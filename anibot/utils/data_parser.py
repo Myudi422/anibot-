@@ -912,7 +912,7 @@ async def get_additional_info(idm, req, ctgry, auth: bool = False, user: int = N
     elif req == "char":
         charlist = []
         for char in data["characters"]['edges']:
-            charlist.append(f"`• <code>{char}</code> - <a href='https://t.me/ccgnimex_bot/?start=character_{char}'>{char['node']['name']['full']} </a> `({char['role']})")
+            charlist.append(f"`• {char['node']['name']['full']} `({char['role']})")
         chrctrs = ("\n").join(charlist)
         charls = f"`{chrctrs}`" if len(charlist) != 0 else ""
         return pic, charls, data["characters"]['pageInfo']
@@ -1185,7 +1185,9 @@ async def browse_(qry: str):
     ls = []
     for i in data:
         if i['format'] in ['TV', 'MOVIE', 'ONA']:
-            ls.append('• `' + i['title']['romaji'] + '`')
+            # ls.append('• `' + i['title']['romaji'] + '`')
+            ls.append += f"\n• <a href='https://t.me/ccgnimeX_bot/?start=anime_{idm}'>{['title']['romaji']}</a>"
+
     out = f'{qry.capitalize()} animes in {s} {y}:\n\n'
     return out + "\n".join(ls[:100])
 
