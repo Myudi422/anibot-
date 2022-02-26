@@ -1187,7 +1187,7 @@ async def browse_(qry: str):
     for i in data:
         if i['format'] in ['TV', 'MOVIE', 'ONA']:
             # ls.append('• `' + i['title']['romaji'] + '`')
-            ls.append += f"\n• + i<a href='https://t.me/ccgnimeX_bot/?start=anime_{idm}'>{['title']['romaji']}</a>"
+            ls.append += f"\n• <a href='https://t.me/ccgnimeX_bot/?start=anime_{idm}'>{['title']['romaji']}</a>"
 
     out = f'{qry.capitalize()} animes in {s} {y}:\n\n'
     return out + "\n".join(ls[:100])
