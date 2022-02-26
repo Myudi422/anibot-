@@ -267,7 +267,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
     pg = f"_{lspage}" if lspage is not None else ""
     if media == "ANIME" and sfw == "False":
         buttons.append([
-            InlineKeyboardButton(text="☰", callback_data=f"desc_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
+            InlineKeyboardButton(text="☰ Menu", callback_data=f"desc_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
             InlineKeyboardButton(text="Karakter", callback_data=f"char_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_1_{user}"),
             InlineKeyboardButton(text="Daftar Seri", callback_data=f"ls_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
         ])
