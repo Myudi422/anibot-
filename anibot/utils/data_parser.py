@@ -794,8 +794,7 @@ async def get_recommendations(id_):
     return outstr
 
 
-async def get_top_animes(idm, gnr: str, page, user):
-    idm = data.get("id")
+async def get_top_animes(gnr: str, page, user):
     vars_ = {"gnr": gnr.lower(), "page": int(page)}
     query = TOP_QUERY
     msg = f"Top animes for genre `{gnr.capitalize()}`:\n\n"
@@ -815,7 +814,7 @@ async def get_top_animes(idm, gnr: str, page, user):
         nsfw = True if gnr.lower() in nsls.lower() else False
     data = result["data"]["Page"]
     for i in data['media']:
-        msg += f"⚬ <a href='https://t.me/ccgnimex_bot/?start=anime_{idm}'>{i['title']['romaji']}</a>\n"
+        msg += f"⚬ `['title']['romaji']`"
     msg += f"\nTotal Anime Tersedia: `{data['pageInfo']['total']}`"
     btn = []
     if int(page)==1:
@@ -1174,7 +1173,7 @@ __{native}__
 
 
 async def browse_(qry: str):
-    idm = data.get("id")
+
     s, y = season_()
     sort = "POPULARITY_DESC"
     if qry == 'upcoming':
