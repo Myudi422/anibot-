@@ -891,11 +891,11 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     except TypeError:
         await cq.answer('No description available!!!')
         return
-    if len(result) > 10:
+    if len(result) > 1000:
         result = result[:940] + "..."
         if spoiler is False:
             result += "\n\nFor more info click below given button"
-            button.append([InlineKeyboardButton(text="More Info", url=f"https://t.me/{bot}/?start=des_{ctgry}_{query}_{kek}"), InlineKeyboardButton(text="Request & Lapor", url=f"https://t.me/ccgnimeX_bot/?start=request_{query}"),
+            button.append([InlineKeyboardButton(text="More Info", url=f"https://t.me/{bot}/?start=des_{ctgry}_{query}_{kek}"),
             ])
             
     add_ = ""
@@ -919,6 +919,8 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
         else f"page_ANIME{lsqry}{lspg}_{q[5]}_{user}" if ctgry=="ANI"
         else f"page_CHARACTER{lsqry}{lspg}_{q[5]}_{user}"
     )
+    button.append([InlineKeyboardButton(text="Request & Lapor", url=f"https://t.me/ccgnimeX_bot/?start=request_{query}"),
+            ])
     button.append([InlineKeyboardButton(text="Back", callback_data=cbd)])
     await cq.edit_message_media(InputMediaPhoto(pic, caption=msg), reply_markup=InlineKeyboardMarkup(button))
 
