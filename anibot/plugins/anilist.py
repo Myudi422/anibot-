@@ -892,7 +892,7 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
         await cq.answer('No description available!!!')
         return
     if len(result) > 10:
-        result = result[:10000]
+        result = result[:940] + "..."
         if spoiler is False:
             result += "\n\nFor more info click below given button"
             button.append([InlineKeyboardButton(text="More Info", url=f"https://t.me/{bot}/?start=des_{ctgry}_{query}_{kek}"), InlineKeyboardButton(text="Request & Lapor", url=f"https://t.me/ccgnimeX_bot/?start=request_{query}"),
