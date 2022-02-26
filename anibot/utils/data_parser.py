@@ -787,8 +787,8 @@ async def get_recommendations(id_):
         ii = i['node']['mediaRecommendation']
         rc_ls.append([ii['title']['romaji'], ii['id'], ii['siteUrl']])
     if rc_ls == []:
-        return "No Recommendations available related to given anime!!!"
-    outstr = "Recommended animes:\n\n"
+        return "Tidak ada Rekomendasi yang tersedia terkait dengan anime yang diberikan!!!"
+    outstr = "Rekomendasi anime terkait:\n\n"
     for i in rc_ls:
         outstr += f"**{i[0]}**\n ➥[Synopsis](https://t.me/{BOT_NAME.replace('@', '')}?start=anime_{i[1]})\n ➥[Official Site]({i[2]})\n\n"
     return outstr
@@ -814,7 +814,7 @@ async def get_top_animes(gnr: str, page, user):
         nsfw = True if gnr.lower() in nsls.lower() else False
     data = result["data"]["Page"]
     for i in data['media']:
-        msg += f"⚬ `['title']['romaji']`"
+        msg += f"⚬ `{i['title']['romaji']}`\n"
     msg += f"\nTotal Anime Tersedia: `{data['pageInfo']['total']}`"
     btn = []
     if int(page)==1:
