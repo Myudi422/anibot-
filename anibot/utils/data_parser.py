@@ -912,7 +912,7 @@ async def get_additional_info(idm, req, ctgry, auth: bool = False, user: int = N
     elif req == "char":
         charlist = []
         for char in data["characters"]['edges']:
-            charlist.append(f"`• {char['node']['name']['full']} `({char['role']})")
+            charlist.append(f"`• <code>{char}</code> - <a href='https://t.me/ccgnimex_bot/?start=character_{char}'>{char['node']['name']['full']} </a> `({char['role']})")
         chrctrs = ("\n").join(charlist)
         charls = f"`{chrctrs}`" if len(charlist) != 0 else ""
         return pic, charls, data["characters"]['pageInfo']
