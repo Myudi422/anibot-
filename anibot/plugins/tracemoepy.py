@@ -31,10 +31,10 @@ async def trace_bek(client: anibot, message: Message, mdata: dict):
     find_gc = await DC.find_one({'_id': gid})
     if find_gc is not None and 'reverse' in find_gc['cmd_list'].split():
         return
-    x = await message.reply_text("Reverse searching the given media")
+    x = await message.reply_text("sedang dalam proses, tunggu bentar bruh...")
     replied = message.reply_to_message
     if not replied:
-        await x.edit_text("Reply to some media !")
+        await x.edit_text("Mohon reply /reverse, media yang ingin dicari!!")
         await asyncio.sleep(5)
         await x.delete()
         return
