@@ -262,10 +262,7 @@ async def start_(client: anibot, message: Message, mdata: dict):
             deep_cmd = mdata['text'].split()[1]
             if deep_cmd=="help":
                 await help_(client, message)
-                return
-            if deep_cmd=="menu":
-                await menu_(client, message)
-                return    
+                return  
             if deep_cmd=="request":
                 await help_(client, message)
                 return    
