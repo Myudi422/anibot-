@@ -263,6 +263,9 @@ async def start_(client: anibot, message: Message, mdata: dict):
             if deep_cmd=="help":
                 await help_(client, message)
                 return
+            if deep_cmd=="menu":
+                await help_(client, message)
+                return    
             if deep_cmd=="request":
                 await help_(client, message)
                 return    
@@ -307,54 +310,6 @@ async def start_(client: anibot, message: Message, mdata: dict):
             await GROUPS.insert_one({"id": gid, "grp": gidtitle})
             await clog("ANIBOT", f"Bot added to a new group\n\n{gidtitle}\nID: `{gid}`", "NEW_GROUP")
         await client.send_message(gid, text="Bot seems online!!!")
-
-# TEST MENU
-@anibot.on_message(filters.command(['menu', f'menu{BOT_NAME}'], prefixes=trg))
-@control_user
-async def help_(client: anibot, message: Message, mdata: dict):
-    gid = mdata['chat']['id']
-    find_gc = await DC.find_one({'_id': gid})
-    if find_gc is not None and 'menu' in find_gc['cmd_list'].split():
-        return
-    bot_us = (await client.get_me()).username
-    try:
-        id_ = mdata['from_user']['id']
-    except KeyError:
-        await client.send_message(
-            gid,
-            text="Click below button for bot help",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Menu", url=f"https://t.me/{bot_us}/?start=Menu")]])
-        )
-        return
-    buttons = help_btns(id_)
-    text='''Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online
-Gunakan /start atau !start cmd untuk memulai bot di grup atau pm
-Gunakan /help atau !help cmd untuk mendapatkan bantuan interaktif pada cmd bot yang tersedia
-Gunakan /feedback cmd untuk menghubungi pemilik bot.\n'''
-    if id_ in OWNER:
-        await client.send_message(gid, text=text, reply_markup=buttons)
-        await client.send_message(
-            gid,
-            text="""Owners / Sudos can also use
-
-- __/term__ `to run a cmd in terminal`
-- __/eval__ `to run a python code (code must start right after cmd like `__/eval print('UwU')__`)`
-- __/stats__ `to get stats on bot like no. of users, grps and authorised users`
-- __/dbcleanup__ `to remove obsolete/useless entries in database`
-
-Apart from above shown cmds"""
-        )
-    else:
-        if gid==id_:
-            await client.send_message(gid, text=text, reply_markup=buttons)
-        else:
-            await client.send_message(
-                gid,
-                text="Click below button for bot help",
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Menu", url=f"https://t.me/{bot_us}/?start=menu")]])
-            )
-
-            #selesai menu
 
 @anibot.on_message(filters.command(['help', f'help{BOT_NAME}'], prefixes=trg))
 @control_user
