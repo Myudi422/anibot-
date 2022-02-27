@@ -268,13 +268,13 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
     if media == "ANIME" and sfw == "False":
         buttons.append([
             InlineKeyboardButton(text="☰ Menu", callback_data=f"desc_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
-            InlineKeyboardButton(text="⥈ Karakter", callback_data=f"char_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_1_{user}"),
-            InlineKeyboardButton(text="≎ Daftar Seri", callback_data=f"ls_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
+            InlineKeyboardButton(text="⌥ Karakter", callback_data=f"char_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_1_{user}"),
+            InlineKeyboardButton(text="⌤ Daftar Seri", callback_data=f"ls_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
         ])
 
     if media == "CHARACTER":
-        buttons.append([InlineKeyboardButton("≖ Deskripsi", callback_data=f"desc_{result[2][0]}_CHAR{qry}{pg}_{str(auth)}_{user}")])
-        buttons.append([InlineKeyboardButton("≎ Daftar Seri", callback_data=f"lsc_{result[2][0]}{qry}{pg}_{str(auth)}_{user}")])
+        buttons.append([InlineKeyboardButton("⌥ Deskripsi", callback_data=f"desc_{result[2][0]}_CHAR{qry}{pg}_{str(auth)}_{user}")])
+        buttons.append([InlineKeyboardButton("⌤ Daftar Seri", callback_data=f"lsc_{result[2][0]}{qry}{pg}_{str(auth)}_{user}")])
     if media == "SCHEDULED":
         if result[0]!=0 and result[0]!=6:
             buttons.append([
@@ -297,7 +297,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         buttons.append(auth_btns)
     else:
         if media=="ANIME" and sfw == "False":
-            buttons.append([InlineKeyboardButton("⥕ Download", switch_inline_query_current_chat=name)])    
+            buttons.append([InlineKeyboardButton("⤓ Download", switch_inline_query_current_chat=name)])    
     if len(result)>3:
         if result[3] == "None":
             if result[4] != "None":
@@ -334,7 +334,7 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
     else:
         btn.append(InlineKeyboardButton(text="➕ Ke Fav" if data[3] is not True else "➖ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
         if media=="ANIME":
-            btn.append(InlineKeyboardButton("Download", switch_inline_query_current_chat=name))
+            btn.append(InlineKeyboardButton("⤓ Download", switch_inline_query_current_chat=name))
             
         btn.append(InlineKeyboardButton(
             text="Add to List" if data[1] is False else "Update List",
