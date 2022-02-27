@@ -74,7 +74,7 @@ async def trace_bek(client: anibot, message: Message, mdata: dict):
         else:
             msg = preview
             caption=caption_
-            button.append([InlineKeyboardButton("⎇ Lihat Anime", url=f"http://t.me/ccgnimex_bot?start=anime_{result['id']}")])
+            button.append([InlineKeyboardButton("⎇ Lihat Anime", url=f"http://t.me/ccgnimex_bot?start=anime_{result['anilist']['id']}")])
         button.append([InlineKeyboardButton("Next", callback_data=f"tracech_1_{dls_js}_{mdata['from_user']['id']}")])
         await (message.reply_video if nsfw is False else message.reply_photo)(msg, caption=caption, reply_markup=InlineKeyboardMarkup(button))
     else:
@@ -104,7 +104,7 @@ async def tracemoe_btn(client: anibot, cq: CallbackQuery, cdata: dict):
         msg = InputMediaPhoto(no_pic[random.randint(0, 4)], caption="The results parsed seems to be 18+ and not allowed in this group")
     else:
         msg = InputMediaVideo(preview, caption=caption)
-        button.append([InlineKeyboardButton("More Info", url=f"http://t.me/ccgnimex_bot?start=anime_{result['id']}")])
+        button.append([InlineKeyboardButton("More Info", url=f"http://t.me/ccgnimex_bot?start=anime/{result['anilist']['id']}")])
     if int(page)==0:
         button.append([InlineKeyboardButton("Next", callback_data=f"tracech_{int(page)+1}_{dls_loc}_{user}")])
     elif int(page)==(len(search['result'])-1):
