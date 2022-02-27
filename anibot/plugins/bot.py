@@ -262,9 +262,9 @@ async def start_(client: anibot, message: Message, mdata: dict):
             deep_cmd = mdata['text'].split()[1]
             if deep_cmd=="help":
                 await help_(client, message)
-                return
-            if deep_cmd=="menu":
-                await menu_(client, message)
+                return  
+            if deep_cmd=="request":
+                await help_(client, message)
                 return    
             if deep_cmd=="auth":
                 await auth_link_cmd(client, message)
@@ -297,26 +297,7 @@ async def start_(client: anibot, message: Message, mdata: dict):
                 k = await AUTH_USERS.find_one({'_id': ObjectId(qry)})
                 await code_cmd(k['code'], message)
                 return
-        await client.send_message(
-            gid,
-            text=f"""Hello, saya bot <b>ccgnimex</b>, untuk penggunaan lebih lanjut, silahkan untuk ketik /help disini.
-
-  Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara,support kami & juga berdonasi agar server tetap hidup & kami terus memberikan kalian anime.
-
-  Saya sarankan, Silahkan Daftar/Login Anilist terlebih dahulu (/auth), untuk menikmati fitur bot ini sepenuhnya.
-""",
-            reply_markup = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("🔎 Di Database", switch_inline_query_current_chat="")
-                    ],
-                    [
-                        InlineKeyboardButton("Anime", url="https://t.me/ccgnimeX_bot/?start=menu"),
-                        InlineKeyboardButton("Manga", url="https://t.me/ccgnimeX_bot/?start=manga_s"),
-                    ]
-                ]
-            )
-        )
+        
     else:
         if not await (GROUPS.find_one({"id": gid})):
             try:
