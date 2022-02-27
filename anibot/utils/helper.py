@@ -337,7 +337,7 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
             btn.append(InlineKeyboardButton("⤓ Download", switch_inline_query_current_chat=name))
             
         btn.append(InlineKeyboardButton(
-            text="⨮ Ke List" if data[1] is False else "⎇ Update List",
+            text="⨮ Ke List" if data[1] is False else "⎇ Ganti List",
             callback_data=f"lsadd_{media}_{data[0]}{qry}{pg}_{user}" if data[1] is False else f"lsupdt_{media}_{data[0]}_{data[2]}{qry}{pg}_{user}"
             ))
             
