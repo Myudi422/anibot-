@@ -264,7 +264,7 @@ async def start_(client: anibot, message: Message, mdata: dict):
                 await help_(client, message)
                 return
             if deep_cmd=="menu":
-                await help_(client, message)
+                await menu_(client, message)
                 return    
             if deep_cmd=="request":
                 await help_(client, message)
