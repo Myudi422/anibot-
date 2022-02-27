@@ -36,8 +36,8 @@ ANIME_TEMPLATE = """{name}
 {bl}**{ptype}:** `{formats}`{avscd}{dura}{user_data}
 {status_air}{gnrs_}{tags_}
 ──────────────────
-🎬 **{trailer_link}** | 📖 <a href="{surl}">**Sinopsis**</a>
-✨ <a href="{url}">**Anilist**</a> | 🔅 <a href="https://t.me/{bot}?start=anirec_{idm}">**Anime Serupa**</a>
+▶ **{trailer_link}** | ⍯ <a href="{surl}">**Sinopsis**</a>
+〄 <a href="{url}">**Anilist**</a> | ☄ <a href="https://t.me/{bot}?start=anirec_{idm}">**Anime Serupa**</a>
 ─────── ∘°❉°∘ ───────
 {additional}"""
 
@@ -980,11 +980,11 @@ async def get_anime(vars_, auth: bool = False, user: int = None, cid: int = None
             in_ls_score = f" and scored {in_list['score']}" if in_list['score']!=0 else ""
             user_data = f"\n{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`"
     if data["title"]["english"] is not None:
-        name = f"""◈ `{romaji}`
-◈ __{native}__ - (**{english}**)"""
+        name = f"""⌯ `{romaji}`
+⌯ __{native}__ - (**{english}**)"""
     else:
-        name = f"""◈ `{romaji}`
-◈ {native}"""
+        name = f"""⌯ `{romaji}`
+⌯ {native}"""
     prql, prql_id, sql, sql_id = "", "None", "", "None"
     for i in prqlsql:
         if i["relationType"] == "PREQUEL":
@@ -1087,8 +1087,8 @@ async def get_anilist(qdb, page, auth: bool = False, user: int = None, cid: int 
             in_ls_stts = in_list['status']
             in_ls_score = f" and scored {in_list['score']}" if in_list['score']!=0 else ""
             user_data = f"\n{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`"
-    name = f"""◈ `{romaji}`
-◈ {native} - **{english}** """
+    name = f"""⌯ `{romaji}`
+⌯ {native} - **{english}** """
     prql, sql = "", ""
     for i in prqlsql:
         if i["relationType"] == "PREQUEL":
@@ -1236,11 +1236,11 @@ async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = 
             in_ls_stts = in_list['status']
             in_ls_score = f" and scored {in_list['score']}" if in_list['score']!=0 else ""
             user_data = f"{bl}**{text[4]}:** `{in_ls_stts}{fav}{in_ls_score}`\n"
-    name = f"""◈ [{c_flag}] **{romaji}**
-◈ __{english}__ - {native}"""
+    name = f"""⌯ [{c_flag}] **{romaji}**
+⌯ __{english}__ - {native}"""
     if english  is None:
-        name = f"""◈ [{c_flag}] **{romaji}**
-◈ {native}"""
+        name = f"""⌯ [{c_flag}] **{romaji}**
+⌯ {native}"""
     finals_ = f"{name}\n\n"
     finals_ += f"{bl}**ID:** `{idm}`\n"
     finals_ += f"{bl}**{text[6]}:** `{status}`\n"

@@ -832,7 +832,7 @@ async def update_anilist_btn(client: Client, cq: CallbackQuery, cdata: dict):
         eid = int(query[4])
     rslt = await update_anilist(id_=idm, req=query[0], status=query[1], user=user, eid=eid)
     if rslt=="ok":
-        await cq.answer("Updated")
+        await cq.answer("Data berhasil diterapkan!")
     else:
         await cq.answer("Something unexpected happened and operation failed successfully", show_alert=True)
         return
