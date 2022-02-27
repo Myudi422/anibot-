@@ -902,9 +902,11 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     user = q.pop()
     if kek=='desc':
         button.append([InlineKeyboardButton(text="⎆ Request", url=f"https://t.me/ccgnimeX_bot/?start=menu_{query}"), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
-            ])
+            ]),
         button.append([InlineKeyboardButton(text="⎙ Batch File", url=f"https://t.me/downloadanimebatch/302"), InlineKeyboardButton(text="❔ Bantuan", url=f"https://t.me/ccgnimeX_bot/?start=help")
-            ])
+            ]),
+        button.append([InlineKeyboardButton(text="✾ Beranda Anime", url=f"https://t.me/ccgnimeX_bot/?start=menu"),
+            ])    
     if kek=='char':
         btndata = rjsdata[2]
         if btndata['lastPage']!=1:
