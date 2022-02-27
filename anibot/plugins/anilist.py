@@ -60,7 +60,7 @@ async def anime_cmd(client: Client, message: Message, mdata: dict):
     if find_gc is not None and 'anime' in find_gc['cmd_list'].split():
         return
     if len(text)==1:
-        k = await message.reply_text("Please give a query to search about\nexample: /anime Ao Haru Ride")
+        k = await message.reply_text("Tolong beri judul untuk mencari anime\ncontoh: /anime Ao Haru Ride")
         await asyncio.sleep(5)
         return await k.delete()
     query = text[1]
@@ -903,7 +903,7 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     if kek=='desc':
         button.append([InlineKeyboardButton(text="⎆ Request", url=f"https://t.me/ccgnimeX_bot/?start=menu_{query}"), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
             ])
-        button.append([InlineKeyboardButton(text="⎙ Batch File", url=f"https://t.me/downloadanimebatch/302"), InlineKeyboardButton(text="🛈 Bantuan", url=f"https://t.me/ccgnimeX_bot/?start=help")
+        button.append([InlineKeyboardButton(text="⎙ Batch File", url=f"https://t.me/downloadanimebatch/302"), InlineKeyboardButton(text="❔ Bantuan", url=f"https://t.me/ccgnimeX_bot/?start=help")
             ])
     if kek=='char':
         btndata = rjsdata[2]
@@ -925,7 +925,7 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
         else f"page_CHARACTER{lsqry}{lspg}_{q[5]}_{user}"
     )
 
-    button.append([InlineKeyboardButton(text="Back", callback_data=cbd)])
+    button.append([InlineKeyboardButton(text="↩ Back", callback_data=cbd)])
     await cq.edit_message_media(InputMediaPhoto(pic, caption=msg), reply_markup=InlineKeyboardMarkup(button))
 
 
