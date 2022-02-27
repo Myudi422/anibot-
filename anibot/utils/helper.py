@@ -292,7 +292,6 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
     name = None
     if media=="ANIME":
         name = (result[1] if len(result)>3 else result[1][0]).split("\n")[0].split(" ", 1)[1].replace("`", "")
-        name1 = (result[1] if len(result)>4 else result[1][0]).split("\n")[0].split(" ", 1)[1].replace("`", "")
     if auth is True and media!="SCHEDULED" and sfw == "False":
         auth_btns = get_auth_btns(media, user, result[2], name, lspage=lspage, lsqry=lsqry)
         buttons.append(auth_btns)
@@ -325,7 +324,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
     return InlineKeyboardMarkup(buttons)
 
 
-def get_auth_btns(media, user, data, name, name1, lsqry: str = None, lspage: int = None):
+def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None):
     
     btn = []
     qry = f"_{lsqry}" if lsqry  is not None else ""
@@ -336,7 +335,6 @@ def get_auth_btns(media, user, data, name, name1, lsqry: str = None, lspage: int
         btn.append(InlineKeyboardButton(text="⨭ Ke Fav" if data[3] is not True else "⨪ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
         if media=="ANIME":
             btn.append(InlineKeyboardButton("⤓ Download", switch_inline_query_current_chat=name))
-            btn.append(InlineKeyboardButton("tes", switch_inline_query_current_chat=name1))
             
         btn.append(InlineKeyboardButton(
             text="⨮ Ke List" if data[1] is False else "⎇ Ganti List",
