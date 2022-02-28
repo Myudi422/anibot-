@@ -862,7 +862,7 @@ async def update_anilist_btn(client: Client, cq: CallbackQuery, cdata: dict):
 
 @anibot.on_callback_query(filters.regex(pattern=r"(desc|ls|char)_(.*)"))
 @check_user
-async def additional_info_btn(client: Client, query, cq: CallbackQuery, cdata: dict):
+async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     await cq.answer()
     q = cdata['data'].split("_")
     kek, query, ctgry = q[0], q[1], q[2]
@@ -901,7 +901,6 @@ async def additional_info_btn(client: Client, query, cq: CallbackQuery, cdata: d
     add_ = ""
     user = q.pop()
     if kek=='desc':
-        button.append(InlineKeyboardButton("⤓ Music", switch_inline_query_current_chat=query))
         button.append([InlineKeyboardButton(text="⎆ Request", url=f"https://t.me/ccgnimeX_bot/?start=menu_{query}"), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
             ]),
         button.append([InlineKeyboardButton(text="⎙ Batch File", url=f"https://t.me/downloadanimebatch/302"), InlineKeyboardButton(text="⟰ Beranda", url=f"https://t.me/ccgnimeX_bot/?start=menu")
