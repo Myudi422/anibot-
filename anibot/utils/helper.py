@@ -297,7 +297,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         buttons.append(auth_btns)
     else:
         if media=="ANIME" and sfw == "False":
-            buttons.append([InlineKeyboardButton("⤓ Download", switch_inline_query_current_chat=name)])    
+            buttons.append([InlineKeyboardButton("⤓ Download", switch_inline_query_current_chat=name | video)])    
     if len(result)>3:
         if result[3] == "None":
             if result[4] != "None":
