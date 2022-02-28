@@ -901,8 +901,8 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     add_ = ""
     user = q.pop()
     if kek=='desc':
-        button.append([InlineKeyboardButton(text="⎆ Request", url=f"https://t.me/ccgnimeX_bot/?start=menu_{query}"), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
-            ]),
+        button.append([InlineKeyboardButton("⤓ Music", f"{query} | audio", "switch_inline_query_current_chat")])
+
         button.append([InlineKeyboardButton(text="⎙ Batch File", url=f"https://t.me/downloadanimebatch/302"), InlineKeyboardButton(text="⟰ Beranda", url=f"https://t.me/ccgnimeX_bot/?start=menu")
             ]),   
     if kek=='char':
