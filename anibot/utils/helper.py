@@ -269,12 +269,12 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         buttons.append([
             InlineKeyboardButton(text="☰ Menu", callback_data=f"desc_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
             InlineKeyboardButton(text="⌥ Karakter", callback_data=f"char_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_1_{user}"),
-            InlineKeyboardButton(text="⌤ Daftar Seri", callback_data=f"ls_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
+            InlineKeyboardButton(text="⌤ Series", callback_data=f"ls_{result[2][0]}_ANI{qry}{pg}_{str(auth)}_{user}"),
         ])
 
     if media == "CHARACTER":
         buttons.append([InlineKeyboardButton("⌥ Deskripsi", callback_data=f"desc_{result[2][0]}_CHAR{qry}{pg}_{str(auth)}_{user}")])
-        buttons.append([InlineKeyboardButton("⌤ Daftar Seri", callback_data=f"lsc_{result[2][0]}{qry}{pg}_{str(auth)}_{user}")])
+        buttons.append([InlineKeyboardButton("⌤ Series", callback_data=f"lsc_{result[2][0]}{qry}{pg}_{str(auth)}_{user}")])
     if media == "SCHEDULED":
         if result[0]!=0 and result[0]!=6:
             buttons.append([
