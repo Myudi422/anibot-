@@ -862,7 +862,7 @@ async def update_anilist_btn(client: Client, cq: CallbackQuery, cdata: dict):
 
 @anibot.on_callback_query(filters.regex(pattern=r"(desc|ls|char)_(.*)"))
 @check_user
-async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
+async def additional_info_btn(client: Client, query, cq: CallbackQuery, cdata: dict):
     await cq.answer()
     q = cdata['data'].split("_")
     kek, query, ctgry = q[0], q[1], q[2]
