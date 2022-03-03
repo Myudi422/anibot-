@@ -1387,7 +1387,7 @@ async def get_scheduled(x: int = 9):
     async with AioJikan() as session:
         sched_ls = (await session.schedule(day=day)).get(day)
         for i in sched_ls:
-            out += f"• https://t.me/ccgnimex_bot/?start=anime_{i['idm']}", "url", 
+            out += f"• `{i['title']}`\n"
     return out, x if x!=9 else datetime.now().weekday()
 
 ####     END      ####
