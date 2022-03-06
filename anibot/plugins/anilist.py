@@ -249,7 +249,7 @@ async def top_tags_cmd(client: Client, message: Message, mdata: dict):
     if len(query)==2:
         get_tag = query[1]
     user = mdata['from_user']['id']
-    result = await get_top_animes(get_tag, 1, user, disable_web_page_preview=True)
+    result = await get_top_animes(get_tag, 1, user,)
     if len(result) == 1:
         k = await message.reply_text(result[0])
         await asyncio.sleep(5)
@@ -257,7 +257,7 @@ async def top_tags_cmd(client: Client, message: Message, mdata: dict):
     if await (SFW_GRPS.find_one({"id": gid})) and str(result[0][1])=="True":
         return await message.reply_text('No nsfw stuff allowed in this group!!!')
     msg, buttons = result
-    await client.send_message(gid, msg[0], reply_markup=buttons if buttons!='' else None, disable_web_page_preview=True)
+    await client.send_message(gid, msg[0], disable_web_page_preview=True, reply_markup=buttons if buttons!='' else None)
 
 
 @anibot.on_message(filters.command(["airing", f"airing{BOT_NAME}"], prefixes=trg))
