@@ -249,7 +249,7 @@ async def top_tags_cmd(client: Client, message: Message, mdata: dict):
     if len(query)==2:
         get_tag = query[1]
     user = mdata['from_user']['id']
-    result = await get_top_animes(get_tag, 1, user)
+    result = await get_top_animes(get_tag, 1, user, disable_web_page_preview=True)
     if len(result) == 1:
         k = await message.reply_text(result[0])
         await asyncio.sleep(5)
