@@ -257,7 +257,7 @@ async def top_tags_cmd(client: Client, message: Message, mdata: dict):
     if await (SFW_GRPS.find_one({"id": gid})) and str(result[0][1])=="True":
         return await message.reply_text('No nsfw stuff allowed in this group!!!')
     msg, buttons = result
-    await client.send_message(gid, msg[0], reply_markup=buttons if buttons!='' else None)
+    await client.send_message(gid, msg[0], reply_markup=buttons if buttons!='' else None, disable_web_page_preview=True)
 
 
 @anibot.on_message(filters.command(["airing", f"airing{BOT_NAME}"], prefixes=trg))
