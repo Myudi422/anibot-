@@ -814,7 +814,7 @@ async def get_top_animes(gnr: str, page, user):
         nsfw = True if gnr.lower() in nsls.lower() else False
     data = result["data"]["Page"]
     for i in data['media']:
-        msg += f"⚬ ({i['title']['romaji']})[http://t.me/ccgnimex_bot?start=anime_{id}]\n"
+        msg += f"⚬ ({i['title']['romaji']}[http://t.me/ccgnimex_bot?start=anime_{id}])\n"
     msg += f"\nTotal Anime Tersedia: `{data['pageInfo']['total']}`"
     btn = []
     if int(page)==1:
