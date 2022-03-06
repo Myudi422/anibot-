@@ -578,7 +578,7 @@ async def top_tags_btn(client: Client, cq: CallbackQuery, cdata: dict):
     kek, gnr, page, user = cdata['data'].split("_")
     result = await get_top_animes(gnr, page=page, user=user)
     msg, buttons = result[0][0], result[1]
-    await cq.edit_message_text(msg, reply_markup=buttons)
+    await cq.edit_message_text(msg, reply_markup=buttons, disable_web_page_preview=True)
 
 
 @anibot.on_callback_query(filters.regex(pattern=r"settogl_(.*)"))
