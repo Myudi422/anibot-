@@ -554,7 +554,7 @@ fragment kek on ListActivity {
 
 TOP_QUERY = """
 query ($gnr: String, $page: Int) {
-  Page (perPage: 50, page: $page) {
+  Page (perPage: 15, page: $page) {
     pageInfo {
       lastPage
       total
@@ -563,6 +563,7 @@ query ($gnr: String, $page: Int) {
       title {
         romaji
       }
+      id
     }
   }
 }
@@ -570,7 +571,7 @@ query ($gnr: String, $page: Int) {
 
 TOPT_QUERY = """
 query ($gnr: String, $page: Int) {
-  Page (perPage: 50, page: $page) {
+  Page (perPage: 15, page: $page) {
     pageInfo {
       lastPage
       total
@@ -579,6 +580,7 @@ query ($gnr: String, $page: Int) {
       title {
         romaji
       }
+      id
     }
   }
 }
@@ -586,7 +588,7 @@ query ($gnr: String, $page: Int) {
 
 ALLTOP_QUERY = """
 query ($page: Int) {
-  Page (perPage: 70, page: $page) {
+  Page (perPage: 15, page: $page) {
     pageInfo {
       lastPage
       total
@@ -595,6 +597,7 @@ query ($page: Int) {
       title {
         romaji
       }
+      id
     }
   }
 }
