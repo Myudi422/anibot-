@@ -818,7 +818,7 @@ async def get_top_animes(gnr: str, page, user):
     data = result["data"]["Page"]
     for i in data['media']:
         msg += f"⚬ [{i['title']['romaji']}](http://t.me/ccgnimex_bot?start=anime_{i['id']})\n"
-    msg += f"\nTotal Anime Tersedia: `{data['pageInfo']['total']}`"
+    msg += f"\nTotal Halaman Tersedia: `{data['pageInfo']['total']}`"
     btn = []
     if int(page)==1:
         if int(data['pageInfo']['lastPage'])!=1:
