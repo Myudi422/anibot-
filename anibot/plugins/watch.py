@@ -21,14 +21,14 @@ async def get_watch_order(client: anibot, message: Message, mdata: dict):
         return
     x = message.text.split(" ", 1)
     if len(x)==1:
-        await message.reply_text("Nothing given to search for!!!")
+        await message.reply_text("Tidak ada yang diberikan untuk dicari!!!")
         return
     user = mdata['from_user']['id']
     data = get_wols(x[1])
     msg = f"Found related animes for the query {x[1]}"
     buttons = []
     if data == []:
-        await client.send_message(gid, 'No results found!!!')
+        await client.send_message(gid, 'Tidak ada judul yang dapat ditemukan..')
         return
     for i in data:
         buttons.append([InlineKeyboardButton(str(i[1]), callback_data=f"watch_{i[0]}_{x[1]}_0_{user}")])
@@ -65,7 +65,7 @@ async def watch_(client: anibot, cq: CallbackQuery, cdata: dict):
 async def wls(client: anibot, cq: CallbackQuery, cdata: dict):
     kek, qry, user = cdata['data'].split("_")
     data = get_wols(qry)
-    msg = f"Found related animes for the query {qry}"
+    msg = f"Menemukan anime terkait untuk kueri {qry}"
     buttons = []
     for i in data:
         buttons.append([InlineKeyboardButton(str(i[1]), callback_data=f"watch_{i[0]}_{qry}_0_{user}")])
