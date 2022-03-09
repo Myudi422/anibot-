@@ -25,7 +25,7 @@ async def get_watch_order(client: anibot, message: Message, mdata: dict):
         return
     user = mdata['from_user']['id']
     data = get_wols(x[1])
-    msg = f"Found related animes for the query {x[1]}"
+    msg = f"Menemukan anime terkait untuk kueri {x[1]}"
     buttons = []
     if data == []:
         await client.send_message(gid, 'Tidak ada judul yang dapat ditemukan..')
