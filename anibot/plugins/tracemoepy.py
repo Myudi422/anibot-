@@ -74,7 +74,7 @@ async def trace_bek(client: anibot, message: Message, mdata: dict):
         else:
             msg = preview
             caption=caption_
-            button.append([InlineKeyboardButton("⎇ Lihat Anime", url=f"http://t.me/ccgnimex_bot?start=anime_{result['anilist']['id']}")])
+            button.append([InlineKeyboardButton("⎇ Lihat Anime", callback_data=f"btn_{result['anilist']['id']}_True_{user}")])
         button.append([InlineKeyboardButton("Next", callback_data=f"tracech_1_{dls_js}_{mdata['from_user']['id']}")])
         await (message.reply_video if nsfw is False else message.reply_photo)(msg, caption=caption, reply_markup=InlineKeyboardMarkup(button))
     else:
