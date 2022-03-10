@@ -104,7 +104,7 @@ async def tracemoe_btn(client: anibot, cq: CallbackQuery, cdata: dict):
         msg = InputMediaPhoto(no_pic[random.randint(0, 4)], caption="The results parsed seems to be 18+ and not allowed in this group")
     else:
         msg = InputMediaVideo(preview, caption=caption)
-        button.append([InlineKeyboardButton("⎇ Lihat Anime", callback_data=f"btn_{result['anilist']['id']}_True_{mdata['from_user']['id']}")])
+        button.append([InlineKeyboardButton("⎇ Lihat Anime", url=f"http://t.me/ccgnimex_bot?start=anime_{result['anilist']['id']}")])
     if int(page)==0:
         button.append([InlineKeyboardButton("Next", callback_data=f"tracech_{int(page)+1}_{dls_loc}_{user}")])
     elif int(page)==(len(search['result'])-1):
