@@ -93,9 +93,9 @@ async def tracemoe_btn(client: anibot, cq: CallbackQuery, cdata: dict):
     search = TRACE_MOE[dls_loc]
     result = search["result"][int(page)]
     caption = (
-        f"**Title**: {result['anilist']['title']['english']} (`{result['anilist']['title']['native']}`)\n"
+        f"**Title**: (`{result['anilist']['title']['romaji']}`) - (**{result['anilist']['title']['native']}**)\n"
         f"\n**Anilist ID:** `{result['anilist']['id']}`"
-        f"\n**Similarity**: `{(str(result['similarity']*100))[:5]}`"
+        f"\n**Kemiripan**: `{(str(result['similarity']*100))[:5]}`"
         f"\n**Episode**: `{result['episode']}`"
     )
     preview = result['video']
