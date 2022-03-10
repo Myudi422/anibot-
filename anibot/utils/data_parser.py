@@ -1192,7 +1192,7 @@ async def browse_(qry: str):
             ls.append('• `' + i['title']['romaji'] + '`')
 
     out = f'{qry.capitalize()} animes in {s} {y}:\n\n'
-    return out + "\n".join(ls[:16])
+    return out + "\n".join(ls[:20])
 
 
 async def get_manga(qdb, page, auth: bool = False, user: int = None, cid: int = None):
