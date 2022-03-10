@@ -901,9 +901,10 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     add_ = ""
     user = q.pop()
     if kek=='desc':
-        button.append([InlineKeyboardButton(text="⎆ Request", callback_data=f'menu {query}'), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
+        
+        button.append([InlineKeyboardButton(text="⎆ Main Menu", callback_data=f'menu {query}'), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
             ]),
-        button.append([InlineKeyboardButton(text="⎙ Batch File", url=f"https://t.me/downloadanimebatch/302"), InlineKeyboardButton(text="⟰ Beranda", callback_data=f'menu')
+        button.append([InlineKeyboardButton(text="⎙ Batch File", url=f"https://t.me/downloadanimebatch/302"), InlineKeyboardButton(text="⟰ Beranda", url=f"https://t.me/otakuindonew")
             ]),   
     if kek=='char':
         btndata = rjsdata[2]
