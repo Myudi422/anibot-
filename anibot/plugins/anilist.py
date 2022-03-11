@@ -902,7 +902,7 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     user = q.pop()
     if kek=='desc':
         
-        button.append([InlineKeyboardButton(text="⎆ Main Menu", callback_data=f'menu {query}'), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
+        button.append([InlineKeyboardButton(text="⎆ Main Menu", callback_data=f'fitur {query}'), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
             ]),
         button.append([InlineKeyboardButton(text="Hapus", callback_data=f'neko_delete, {user}'), InlineKeyboardButton(text="⟰ Beranda", url=f"https://t.me/otakuindonew")
             ]),   
