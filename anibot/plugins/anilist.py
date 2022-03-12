@@ -860,6 +860,78 @@ async def update_anilist_btn(client: Client, cq: CallbackQuery, cdata: dict):
     await cq.edit_message_media(InputMediaPhoto(pic, caption=msg), reply_markup=btns)
 
 #deskripsi ANIME
+@anibot.on_callback_query(filters.regex(pattern=r"(desc1|ls1|char1)_(.*)"))
+@check_user
+async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
+    await cq.answer()
+    q = cdata['data'].split("_")
+    kek, query, ctgry = q[0], q[1], q[2]
+    info = (
+        "<b>Deskripsi</b>"
+        if kek == "desc1"
+        else "<b>Series List</b>"
+        if kek == "ls1"
+        else "<b>Characters List</b>"
+    )
+    page = 0
+    lsqry = f"_{q[3]}" if len(q) > 6 else ""
+    lspg = f"_{q[4]}" if len(q) > 6 else ""
+    if kek == 'char':
+        page = q[6] if len(q) > 6 else q[4]
+    rjsdata = await get_additional_info(query, kek, ctgry, page=int(page))
+    pic, result = rjsdata[0], rjsdata[1]
+    button = []
+    spoiler = False
+    bot = BOT_NAME.replace("@", "")
+    try:
+        if "~!" in result and "!~" in result:
+            result = re.sub(r"~!.*!~", "[Spoiler]", result)
+            spoiler = True
+            button.append([InlineKeyboardButton(text="View spoiler", url=f"https://t.me/{bot}/?start=des_{ctgry}_{query}")])
+    except TypeError:
+        await cq.answer('No description available!!!')
+        return
+    if len(result) > 1000:
+        result = result[:940] + "..."
+        if spoiler is False:
+            result += "\n\nUntuk lebih lanjutnya, silahkan klik tombol dibawah ini"
+            button.append([InlineKeyboardButton(text="More Info", url=f"https://t.me/{bot}/?start=des_{ctgry}_{query}_{kek}"),
+            ])
+            
+    add_ = ""
+    user = q.pop()
+    if kek=='desc1':
+        
+        button.append([InlineKeyboardButton(text="⎆ Main Menu", callback_data=f'fitur {query}'), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
+            ]),
+        button.append([InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}'), InlineKeyboardButton(text="⟰ Beranda", url=f"https://t.me/otakuindonew")
+            ]),   
+    if kek=='char1':
+        btndata = rjsdata[2]
+        if btndata['lastPage']!=1:
+            if page == '1':
+                button.append([InlineKeyboardButton(text="Next", callback_data=f'{kek}_{query}_{ctgry}{lsqry}{lspg}_{q[5] if len(q) != 5 else q[3]}_{int(page)+1}_{user}')])
+            elif btndata['lastPage']==int(page):
+                button.append([InlineKeyboardButton(text="Prev", callback_data=f'{kek}_{query}_{ctgry}{lsqry}{lspg}_{q[5] if len(q) != 5 else q[3]}_{int(page)-1}_{user}')])
+            else:
+                button.append([
+                    InlineKeyboardButton(text="Prev", callback_data=f'{kek}_{query}_{ctgry}{lsqry}{lspg}_{q[5] if len(q) != 5 else q[3]}_{int(page)-1}_{user}'),
+                    InlineKeyboardButton(text="Next", callback_data=f'{kek}_{query}_{ctgry}{lsqry}{lspg}_{q[5] if len(q) != 5 else q[3]}_{int(page)+1}_{user}')
+                ])
+        add_ = f"\n\nTotal Characters: {btndata['total']}"
+    msg = f"{info}:\n\n{result+add_}"
+    cbd = (
+        f"btn_{query}_{q[3]}_{user}" if len(q) <= 5
+        else f"page_ANIME{lsqry}{lspg}_{q[5]}_{user}" if ctgry=="ANI"
+        else f"page_CHARACTER{lsqry}{lspg}_{q[5]}_{user}"
+    )
+    
+
+    button.append([InlineKeyboardButton(text="↩ Back", callback_data=cbd)])
+    await cq.edit_message_media(InputMediaPhoto(pic, caption=msg), reply_markup=InlineKeyboardMarkup(button))
+
+
+#deskripsi ANIME
 @anibot.on_callback_query(filters.regex(pattern=r"(desc|ls|char)_(.*)"))
 @check_user
 async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
