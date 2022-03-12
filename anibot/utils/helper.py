@@ -273,7 +273,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         ])
 
     if media == "CHARACTER":
-        buttons.append([InlineKeyboardButton("⌥ Deskripsi", url=f"desc_{result[2][0]}_CHAR{qry}{pg}_{str(auth)}_{user}")])
+        buttons.append([InlineKeyboardButton("⌥ Deskripsi", url=f"https://t.me/ccgnimeX_bot/?start=des_{result[2][0]}_CHAR{qry}{pg}_{str(auth)}_{user}")])
         buttons.append([InlineKeyboardButton("⌤ Series", callback_data=f"lsc_{result[2][0]}{qry}{pg}_{str(auth)}_{user}")])
     if media == "SCHEDULED":
         if result[0]!=0 and result[0]!=6:
