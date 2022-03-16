@@ -295,9 +295,11 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
     if auth is True and media!="SCHEDULED" and sfw == "False":
         auth_btns = get_auth_btns(media, user, result[2], name, lspage=lspage, lsqry=lsqry)
         buttons.append(auth_btns)
-    else:
-        if media=="ANIME" and sfw == "False":
-            buttons.append([InlineKeyboardButton("〧 Unduh", switch_inline_query_current_chat=name)])
+
+        # Tombol Download Guest.
+    #else:
+        #if media=="ANIME" and sfw == "False":
+            #buttons.append([InlineKeyboardButton("〧 Unduh", switch_inline_query_current_chat=name)])
             
     if len(result)>3:
         if result[3] == "None":
