@@ -336,8 +336,8 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
         btn.append(InlineKeyboardButton(text="⨭ Ke Fav" if data[1] is not True else "⨪ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
     else:
         btn.append(InlineKeyboardButton(text="⨭ Ke Fav" if data[3] is not True else "⨪ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
-        if media=="ANIME":
-            btn.append(InlineKeyboardButton("〧 Unduh", switch_inline_query_current_chat=name))
+        #if media=="ANIME":
+          #  btn.append(InlineKeyboardButton("〧 Unduh", switch_inline_query_current_chat=name))
             
         btn.append(InlineKeyboardButton(
             text="⨮ Ke List" if data[1] is False else "⎇ Ganti List",
