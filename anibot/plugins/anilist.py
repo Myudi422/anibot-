@@ -904,7 +904,7 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
         
         button.append([InlineKeyboardButton(text="⎆ Main Menu", callback_data=f'fitur {query}'), InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")
             ]),
-        button.append([InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}'), InlineKeyboardButton(text="⟰ Beranda", url=f"https://t.me/otakuindonew")
+        button.append([InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}'),
             ]),   
     if kek=='char':
         btndata = rjsdata[2]
