@@ -13,3 +13,4 @@ natsort
 apscheduler
 lxml
 html5lib
+python3-tk
