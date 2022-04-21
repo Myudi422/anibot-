@@ -7,6 +7,7 @@
 
 
 import asyncio
+from tkinter import Menu
 import requests
 import time
 import random
@@ -487,6 +488,9 @@ async def browse_cmd(client: Client, message: Message, mdata: dict):
         InlineKeyboardButton(tr, callback_data=f'browse_{tr.lower()}_{user}'),
         InlineKeyboardButton(pp, callback_data=f'browse_{pp.lower()}_{user}'),
         InlineKeyboardButton(up, callback_data=f'browse_{up.lower()}_{user}'),
+    ],
+    [
+        InlineKeyboardButton(text="Menu", callback_data=f'menu'),
     ]]
     msg = await browse_('trending')
     await client.send_message(gid, msg, reply_markup=InlineKeyboardMarkup(btns))
@@ -794,7 +798,11 @@ async def browse_btn(client: Client, cq: CallbackQuery, cdata: dict):
         InlineKeyboardButton(tr, callback_data=f'browse_{tr.lower()}_{query[2]}'),
         InlineKeyboardButton(pp, callback_data=f'browse_{pp.lower()}_{query[2]}'),
         InlineKeyboardButton(up, callback_data=f'browse_{up.lower()}_{query[2]}'),
-    ]]
+    ],
+    [
+        InlineKeyboardButton(text="Menu", callback_data=f'menu'),
+    ],
+    ]
     await cq.edit_message_text(msg, reply_markup=InlineKeyboardMarkup(btns))
 
 

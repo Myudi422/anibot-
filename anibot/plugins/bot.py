@@ -326,10 +326,8 @@ async def help_(client: anibot, message: Message, mdata: dict):
         )
         return
     buttons = help_btns(id_)
-    text='''Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online
-Gunakan /start atau !start cmd untuk memulai bot di grup atau pm
-Gunakan /help atau !help cmd untuk mendapatkan bantuan interaktif pada cmd bot yang tersedia
-Gunakan /feedback cmd untuk menghubungi pemilik bot.\n'''
+    text='''**MENU BANTUAN BOT:**\n\nSilahkan Untuk pilih, daftar menu bantuan, yang kalian butuhkan.
+\nHarap untuk dibaca semua, agar memahami bot ini sepenuhnya.'''
     if id_ in OWNER:
         await client.send_message(gid, text=text, reply_markup=buttons)
         await client.send_message(
@@ -370,11 +368,8 @@ async def help_list_parser(client: anibot, cq: CallbackQuery, cdata: dict):
     await cq.answer()
     user = cdata['data'].split("_")[1]
     buttons = help_btns(user)
-    text='''Ini adalah panduan kecil tentang cara menggunakan bot\n\n**Perintah Dasar:**\nGunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online
-Gunakan /start atau !start cmd untuk memulai bot di grup atau pm
-Gunakan /help atau !help cmd untuk mendapatkan bantuan interaktif pada cmd bot yang tersedia
-Gunakan /feedback cmd untuk menghubungi pemilik bot.
-Untuk Mendownload Video dari YT, Silahkan gunakan @vid dan cari video yang ingin didownload, lalu kirim link yt nya kesini/grup.'''
+    text='''**MENU BANTUAN BOT:**\n\nSilahkan Untuk pilih, daftar menu bantuan, yang kalian butuhkan.
+\nHarap untuk dibaca semua, agar memahami bot ini sepenuhnya.'''
     await cq.edit_message_text(text=text, reply_markup=buttons)
 
 
