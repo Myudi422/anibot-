@@ -121,7 +121,7 @@ async def livechart_parser():
             listlinks = ""
             for ii in ls[i]:
                 listlinks += '\n__'+ii[0]+'__: [Link]('+ii[1]+')'
-            msgssp.append(['**Update Anime Terbaru di Subsplease**\n\n' + i + listlinks, 'https://nyaa.si/?q='+re.sub(r' ', '%20', re.sub(r'(\().*?(\))', r'', i).strip())])
+            msgssp.append(['**Anime Update dari Subplease**\n\n' + i + listlinks, 'https://nyaa.si/?q='+re.sub(r' ', '%20', re.sub(r'(\().*?(\))', r'', i).strip())])
 ##########################
 
 
