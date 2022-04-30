@@ -151,7 +151,7 @@ async def livechart_parser():
     if await AR_GRPS.find_one() is not None:
         for i in msgslc:
             async for id_ in AR_GRPS.find():
-                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1]), InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')]])
+                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1])]])
                 try:
                     await anibot.send_message(id_['_id'], i[0], reply_markup=btn)
                     await asyncio.sleep(1.5)
@@ -168,7 +168,7 @@ async def livechart_parser():
     if await CR_GRPS.find_one() is not None:
         for i in msgscr:
             async for id_ in CR_GRPS.find():
-                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1]), InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')]])
+                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1])]])
                 try:
                     await anibot.send_message(id_['_id'], i[0], reply_markup=btn)
                     await asyncio.sleep(1.5)
