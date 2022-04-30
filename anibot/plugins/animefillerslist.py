@@ -16,10 +16,10 @@ async def fillers_cmd(client: anibot, message: Message, mdata: dict):
         return
     qry = mdata['text'].split(" ", 1)
     if len(qry)==1:
-        return await message.reply_text("Give some anime name to search fillers for\nexample: /fillers Detective Conan")
+        return await message.reply_text("Berikan beberapa nama anime untuk mencari pengisi\ncontoh: /fillers Detective Conan")
     k = search_filler(qry[1])
     if k == {}:
-        await message.reply_text("No fillers found for the given anime...")
+        await message.reply_text("Tidak ada pengisi yang ditemukan untuk anime yang diberikan...")
         return
     button = []
     list_ = list(k.keys())

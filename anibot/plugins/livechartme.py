@@ -10,6 +10,16 @@ from .. import anibot
 from ..utils.db import get_collection
 from ..utils.helper import clog
 
+from pyrogram import filters, Client
+from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, Message
+from pyrogram.errors import UserNotParticipant
+from .. import ANILIST_CLIENT, ANILIST_REDIRECT_URL, ANILIST_SECRET, OWNER, TRIGGERS as trg, BOT_NAME, anibot
+from ..utils.data_parser import (
+    get_all_genres, get_all_tags, get_top_animes, get_user_activity, get_user_favourites, toggle_favourites,
+    get_anime, get_airing, get_anilist, get_character, get_additional_info, get_manga, browse_,
+    get_featured_in_lists, update_anilist, get_user, ANIME_DB, MANGA_DB, CHAR_DB, AIRING_DB, GUI
+)
+
 url_a = "https://www.livechart.me/feeds/episodes"
 url_b = 'https://feeds.feedburner.com/crunchyroll/rss/anime?format=xml'
 url_c = 'https://subsplease.org/rss/?t'
@@ -62,14 +72,14 @@ async def livechart_parser():
         if len(i[0])==2:
             clc[i[0][0]].append([i[0][1], i[1]])
         else:
-            text = f'{i[0][0]} just aired'
+            text = f'{i[0][0]} sudah rilis'
             msgslc.append([text, i[1]])
     for i in list(clc.keys()):
         if len(clc[i])>1:
             aep = [clc[i][len(clc[i])-1][0], clc[i][0][0]]
-            text = f'\nEpisode {min(aep)} - {max(aep)} of {i} just aired'
+            text = f'\nEpisode {min(aep)} - {max(aep)} untuk `{i}` sudah rilis'
         else:
-            text = f'\nEpisode {clc[i][0][0]} of {i} just aired'
+            text = f'\nEpisode {clc[i][0][0]} untuk `{i}` sudah rilis'
         msgslc.append([text, clc[i][0][1]])
 ###############################
 
@@ -88,7 +98,7 @@ async def livechart_parser():
             if 'Episode' in i[0][1]:
                 clc[i[0][0]].append([i[0][1], i[1]])
             else:
-                msgscr.append([f"**New anime released on Crunchyroll**\n\n**Title:** {i[0][0]}", i[1]])
+                msgscr.append([f"**Anime terbaru rilis di Crunchyroll**\n\n**Judul:** {i[0][0]}", i[1]])
         else:
             fk.append(i)
     for i in list(clc.keys()):
@@ -96,7 +106,7 @@ async def livechart_parser():
         for ii in clc[i]:
             hmm.append(ii[0].split()[1])
         aep = [hmm[len(hmm)-1], hmm[0]] if len(hmm)!=1 and hmm[len(hmm)-1]!=hmm[0] else [hmm[0]]
-        msgscr.append([f"**New anime released on Crunchyroll**\n\n**Title:** {i}\n**Episode:** {aep[0] if len(aep)==1 or min(aep)==max(aep) else min(aep)+' - '+max(aep)}\n{'**EP Title:** '+ii[1] if len(ii)==3 else ''}", ii[1] if len(ii)!=3 else ii[2]])
+        msgscr.append([f"**Anime terbaru rilis di Crunchyroll**\n\n**Judul:** {i}\n**Episode:** {aep[0] if len(aep)==1 or min(aep)==max(aep) else min(aep)+' - '+max(aep)}\n{'**EP Title:** '+ii[1] if len(ii)==3 else ''}", ii[1] if len(ii)!=3 else ii[2]])
 #########################
 
 
@@ -141,7 +151,7 @@ async def livechart_parser():
     if await AR_GRPS.find_one() is not None:
         for i in msgslc:
             async for id_ in AR_GRPS.find():
-                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1])]])
+                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1]), InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')]])
                 try:
                     await anibot.send_message(id_['_id'], i[0], reply_markup=btn)
                     await asyncio.sleep(1.5)
@@ -158,7 +168,7 @@ async def livechart_parser():
     if await CR_GRPS.find_one() is not None:
         for i in msgscr:
             async for id_ in CR_GRPS.find():
-                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1])]])
+                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1]), InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')]])
                 try:
                     await anibot.send_message(id_['_id'], i[0], reply_markup=btn)
                     await asyncio.sleep(1.5)
@@ -192,6 +202,7 @@ async def livechart_parser():
                 btn = InlineKeyboardMarkup([[
                     InlineKeyboardButton("More Info", url=i[2]),
                     InlineKeyboardButton("Source", url=i[3]),
+                    
                 ]])
                 try:
                     await anibot.send_photo(id_['_id'], i[0], caption=i[1], reply_markup=btn)

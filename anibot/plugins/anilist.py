@@ -105,7 +105,7 @@ async def manga_cmd(client: Client, message: Message, mdata: dict):
     if find_gc is not None and 'manga' in find_gc['cmd_list'].split():
         return
     if len(text)==1:
-        k = await message.reply_text("Please give a query to search about\nexample: /manga The teasing master Takagi san")
+        k = await message.reply_text("Berikan kueri untuk menelusuri\ncontoh: /manga Naruto")
         await asyncio.sleep(5)
         return await k.delete()
     query = text[1]
@@ -149,7 +149,7 @@ async def character_cmd(client: Client, message: Message, mdata: dict):
     if find_gc is not None and 'character' in find_gc['cmd_list'].split():
         return
     if len(text)==1:
-        k = await message.reply_text("Please give a query to search about\nexample: /character Nezuko")
+        k = await message.reply_text("Berikan kueri untuk menelusuri\ncontoh: /character Nezuko")
         await asyncio.sleep(5)
         return await k.delete()
     query = text[1]
@@ -179,7 +179,7 @@ async def anilist_cmd(client: Client, message: Message, mdata: dict):
     if find_gc is not None and 'anilist' in find_gc['cmd_list'].split():
         return
     if len(text)==1:
-        k = await message.reply_text("Please give a query to search about\nexample: /anilist rezero")
+        k = await message.reply_text("Berikan kueri untuk menelusuri\ncontoh: /anilist rezero")
         await asyncio.sleep(5)
         return await k.delete()
     query = text[1]
@@ -215,7 +215,7 @@ async def flex_cmd(client: Client, message: Message, mdata: dict):
         if find_gc is not None and 'user' in find_gc['cmd_list'].split():
             return
         if not len(query)==2:
-            k = await message.reply_text("Please give an anilist username to search about\nexample: /user Lostb053")
+            k = await message.reply_text("Berikan nama pengguna anilist untuk mencari tentang\ncontoh: /user akuiiki")
             await asyncio.sleep(5)
             return await k.delete()
         else:
@@ -225,7 +225,7 @@ async def flex_cmd(client: Client, message: Message, mdata: dict):
     user = mdata['from_user']['id']
     if not "user" in query[0] and not (await AUTH_USERS.find_one({"id": user})):
         return await message.reply_text(
-            "Please connect your account first to use this cmd",
+            "Harap sambungkan akun Anda terlebih dahulu untuk menggunakan cmd ini",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Auth", url=f"https://t.me/{BOT_NAME.replace('@', '')}/?start=auth")]])
         )
     result = await get_user(qry, query[0], user)
@@ -270,7 +270,7 @@ async def airing_cmd(client: Client, message: Message, mdata: dict):
     if find_gc is not None and 'airing' in find_gc['cmd_list'].split():
         return
     if len(text)==1:
-        k = await message.reply_text("Please give a query to search about\nexample: /airing Fumetsu no Anata e")
+        k = await message.reply_text("Tolong beri perintah untuk mencari tentang\ncontoh: /airing Fumetsu no Anata e")
         await asyncio.sleep(5)
         return await k.delete()
     query = text[1]
@@ -324,18 +324,18 @@ async def auth_link_cmd(client, message: Message, mdata: dict):
         )
     else:
         await message.reply_text(
-            "Go to bot pm to authorize yourself!!!",
+            "Pergi ke bot pm untuk mengotorisasi diri sendiri!!!",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Auth", url=f"https://t.me/{BOT_NAME.replace('@', '')}/?start=auth")]])
         )
 
 setting_text = """
-This allows you to change group settings
+Ini memungkinkan Anda untuk mengubah pengaturan grup
         
-NSFW toggle switches on filtering of 18+ marked content
-Airing notifications notifies about airing of anime in recent
-Crunchyroll updates will toggle notifications about release of animes on crunchyroll site
-Subsplease updates will toggle notifications about release of animes on subsplease site
-Headlines will toggle notifications for anime news powered by livechart.me
+Mengatur Konten NSFW pada pemfilteran 18+ konten yang ditandai
+Pemberitahuan penayangan tentang penayangan anime baru-baru ini
+Pembaruan Crunchyroll akan mengaktifkan pemberitahuan tentang rilis anime di situs crunchyroll
+Pembaruan subsplease akan mengaktifkan pemberitahuan tentang rilis anime di situs subsplease (Torrent)
+Berita utama akan mengaktifkan notifikasi untuk berita anime yang diberdayakan oleh livechart.me
 """
 @anibot.on_message(~filters.private & filters.command(["settings", f"settings{BOT_NAME}"], prefixes=trg))
 @control_user
@@ -416,7 +416,7 @@ async def activity_cmd(client: Client, message: Message, mdata: dict):
         return
     if not (await AUTH_USERS.find_one({"id": user})):
         return await message.reply_text(
-            "Please connect your account first to use this cmd",
+            "Harap sambungkan akun Anda terlebih dahulu untuk menggunakan cmd ini",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Auth", url=f"https://t.me/{BOT_NAME.replace('@', '')}/?start=auth")]])
         )
     result = await get_user(None, "flex", user)
@@ -437,7 +437,7 @@ async def favourites_cmd(client: Client, message: Message, mdata: dict):
         return
     if not (await AUTH_USERS.find_one({"id": user})):
         return await message.reply_text(
-            "Please connect your account first to use this cmd",
+            "Harap sambungkan akun Anda terlebih dahulu untuk menggunakan cmd ini",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Auth", url=f"https://t.me/{BOT_NAME.replace('@', '')}/?start=auth")]])
         )
     result = await get_user(None, "flex", user)

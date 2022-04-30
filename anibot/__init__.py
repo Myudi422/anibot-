@@ -40,9 +40,10 @@ Group based commands:
 /disabled - List out disabled cmds
 '''
 
-HELP_DICT["Additional"] = """Gunakan /reverse cmd untuk mendapatkan pencarian anime melalui tracemoepy API
-__Catatan: Ini berfungsi paling baik pada gambar anime yang tidak dipotong,
-ketika digunakan pada media yang kepotong, Anda mungkin mendapatkan hasil tetapi mungkin tidak terlalu andal__
+HELP_DICT["Additional"] = """Gunakan /reverse untuk mencari anime melalui tracemoepy API, yang dimana bot ini akan memberikan judul/info terkait anime tersebut.
+
+Catatan: Ini berfungsi paling baik pada gambar anime yang tidak dipotong,
+ketika digunakan pada media yang kepotong, Anda mungkin mendapatkan hasil tetapi mungkin tidak akurat.
 
 Gunakan perintah /schedule untuk mendapatkan anime terjadwal berdasarkan hari kerja
 
@@ -51,12 +52,38 @@ Gunakan perintah /watch untuk mendapatkan urutan tontonan anime yang dicari
 Gunakan /fillers cmd untuk mendapatkan daftar pengisi untuk anime
 
 Gunakan /quote cmd untuk mendapatkan kutipan acak
+
+Gunakan /wallpaper untuk mendapatkan file/gambar wallpaper anime secara random (API)
+
+Gunakan /waifu untuk mendapatkan gambar waifu (neko) secara random (API)
+
+Mendownload VIDEO/AUDIO dari Youtube.
+
+Silahkan aktifkan bot @vid nya terlebih dahulu, lalu kembali kebot ini.
+
+Setelah itu, kalian ketik @vid "judul/nama"  yang ingin
+
+kalian download/streaming.
+
+lalu, klik video tersebut, nanti otomatis bot ini akan memprosesnya.
+
+Stream/Download External 
+
+Saya sarankan gunakan bot ini @nimexLink_bot
+
+fungsinya itu, untuk menconvert, file dokumen/video dari telegram,
+ke link yang bisa kalian download mengunakan browser maupun sejenisnya.
+tidak hanya itu, selain mendownload, kalian bisa streaming via link.
+
+....
 """
 
 HELP_DICT["Anilist"] = """
-Di bawah ini adalah daftar cmd anilist dasar untuk info anime, karakter, manga, dll.
+Ini merupakan menu bantuan anilist, terkait penggunaan bot ini,
 
-/anime - Gunakan cmd ini untuk mendapatkan info tentang anime tertentu menggunakan kata kunci (nama anime) atau ID Anilist
+Di bawah ini adalah daftar cmd anilist dasar untuk mendownload/ mengambil info anime, karakter, manga, dll.
+
+/anime - Gunakan cmd ini untuk mendapatkan info & mendownload anime tertentu menggunakan kata kunci (nama anime) atau ID Anilist
 (Dapat mencari info tentang sekuel dan prekuel)
 
 /anilist - Gunakan perintah ini untuk memilih di antara beberapa anime dengan nama serupa yang terkait dengan kueri yang dicari
@@ -75,13 +102,21 @@ Di bawah ini adalah daftar cmd anilist dasar untuk info anime, karakter, manga, 
 /user - Gunakan perintah ini untuk mendapatkan info tentang pengguna anilist
 
 /browse - Gunakan perintah ini untuk mendapatkan pembaruan tentang anime terbaru/top/upcoming.
+
+/menu - untuk mengarahkan ke menu anime.
+
+/manga_s - untuk mengarahkan ke menu manga.
+
+/jadwal - cek anime ongoing dari kami.
 """
 
 HELP_DICT["Oauth"] = """
-Ini termasuk fitur anilis tingkat lanjut
+Ini merupakan menu bantuan tambahan serta fitur canggih, terkait penggunaan bot ini,
 
-Gunakan /auth atau !auth cmd untuk mendapatkan detail tentang cara mengotorisasi akun Anilist Anda dengan bot
+Gunakan /auth atau !auth untuk login/daftar akun Anilist Anda dengan bot.
+
 Otorisasi diri Anda membuka fitur-fitur canggih bot seperti:
+
 - menambahkan anime/karakter/manga ke favorit
 - melihat data anilist Anda yang terkait dengan anime/manga dalam pencarian Anda yang mencakup skor, status, dan favorit
 - buka /flex, /me, /activity and /favourites 
@@ -96,4 +131,18 @@ Gunakan /me atau !me cmd untuk mendapatkan aktivitas terbaru anilist Anda
 bisa juga /activity or !activity
 
 Gunakan /favourites cmd untuk mendapatkan favorit anilis Anda.
+
+Mengganti foto/sampul anda 
+
+Silahkan kunjungi https://anilist.co/settings, lalu pilih foto dan terapkan.
+
+Bagaimana masalah terhadap, riwayat, atau list
+yang belum muncul ? 
+
+Normalnya kalian harus menunggu 1 hari saat kalian list,
+agar tampil di menu /flex, /me dan lainnya.
+
+Solusinya yang ingin menambahkan dengan manual/cepat, silahkan klik ini : https://anilist.co/settings/lists 
+
+Cari text "Stats", klik tombol Update stats.
 """
