@@ -72,14 +72,14 @@ async def livechart_parser():
         if len(i[0])==2:
             clc[i[0][0]].append([i[0][1], i[1]])
         else:
-            text = f'{i[0][0]} sudah rilis'
+            text = f'{i[0][0]} Sudah Rilis! ~ livechart.me'
             msgslc.append([text, i[1]])
     for i in list(clc.keys()):
         if len(clc[i])>1:
             aep = [clc[i][len(clc[i])-1][0], clc[i][0][0]]
-            text = f'\nEpisode {min(aep)} - {max(aep)} untuk `{i}` sudah rilis'
+            text = f'\nEpisode {min(aep)} - {max(aep)} Untuk Anime `{i}` Sudah Rilis! ~ livechart.me'
         else:
-            text = f'\nEpisode {clc[i][0][0]} untuk `{i}` sudah rilis'
+            text = f'\nEpisode {clc[i][0][0]} Untuk Anime `{i}` Sudah Rilis! ~ livechart.me'
         msgslc.append([text, clc[i][0][1]])
 ###############################
 
@@ -151,7 +151,7 @@ async def livechart_parser():
     if await AR_GRPS.find_one() is not None:
         for i in msgslc:
             async for id_ in AR_GRPS.find():
-                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1])]])
+                btn = InlineKeyboardMarkup([[InlineKeyboardButton("Info Lebih Lanjut", url=i[1])]])
                 try:
                     await anibot.send_message(id_['_id'], i[0], reply_markup=btn)
                     await asyncio.sleep(1.5)
@@ -168,7 +168,7 @@ async def livechart_parser():
     if await CR_GRPS.find_one() is not None:
         for i in msgscr:
             async for id_ in CR_GRPS.find():
-                btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=i[1])]])
+                btn = InlineKeyboardMarkup([[InlineKeyboardButton("Info Lebih Lanjut", url=i[1])]])
                 try:
                     await anibot.send_message(id_['_id'], i[0], reply_markup=btn)
                     await asyncio.sleep(1.5)
@@ -200,8 +200,8 @@ async def livechart_parser():
         for i in msgslch:
             async for id_ in HD_GRPS.find():
                 btn = InlineKeyboardMarkup([[
-                    InlineKeyboardButton("More Info", url=i[2]),
-                    InlineKeyboardButton("Source", url=i[3]),
+                    InlineKeyboardButton("Info Lebih Lanjut", url=i[2]),
+                    InlineKeyboardButton("Sumber", url=i[3]),
                     
                 ]])
                 try:
