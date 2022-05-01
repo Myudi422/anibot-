@@ -25,6 +25,7 @@ url_b = 'https://feeds.feedburner.com/crunchyroll/rss/anime?format=xml'
 url_c = 'https://subsplease.org/rss/?t'
 url_d = 'https://www.livechart.me/feeds/headlines'
 
+
 A = get_collection('AIRING_TITLE')
 B = get_collection('CRUNCHY_TITLE')
 C = get_collection('SUBSPLEASE_TITLE')
