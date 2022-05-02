@@ -286,9 +286,9 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         if result[0] == 6:
             buttons.append([InlineKeyboardButton(str(day_(result[0]-1)), callback_data=f"sched_{result[0]-1}_{user}")])
     if media == "MANGA" and sfw == "False":
-        buttons.append([InlineKeyboardButton("More Info", url=result[1][2])]), [InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')]
+        buttons.append([InlineKeyboardButton("More Info", url=result[1][2])]), buttons.append([InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')])
     if media == "AIRING" and sfw == "False":
-        buttons.append([InlineKeyboardButton("More Info", url=result[1][0])]), [InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')]
+        buttons.append([InlineKeyboardButton("More Info", url=result[1][0])]), buttons.append([InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')])
     name = None
     if media=="ANIME":
         name = (result[1] if len(result)>3 else result[1][0]).split("\n")[0].split(" ", 1)[1].replace("`", "")
