@@ -818,17 +818,26 @@ async def get_top_animes(gnr: str, page, user):
     data = result["data"]["Page"]
     for i in data['media']:
         msg += f"⚬ [{i['title']['romaji']}](http://t.me/ccgnimex_bot?start=anime_{i['id']})\n"
-    msg += f"\nTotal Halaman Tersedia: `{data['pageInfo']['total']}`"
+    msg += f"\nTotal Halaman Tersedia: `{data['pageInfo']['total']}`\nKalian bisa juga menambahkan genre/tag, seperti `/top romance`."
     btn = []
     if int(page)==1:
         if int(data['pageInfo']['lastPage'])!=1:
             btn.append([InlineKeyboardButton("Next", callback_data=f"topanimu_{gnr}_{int(page)+1}_{user}")])
+            btn.append([
+            InlineKeyboardButton("Menu", callback_data=f"menu"),
+        ])
     elif int(page) == int(data['pageInfo']['lastPage']):
         btn.append([InlineKeyboardButton("Prev", callback_data=f"topanimu_{gnr}_{int(page)-1}_{user}")])
+        btn.append([
+            InlineKeyboardButton("Menu", callback_data=f"menu"),
+        ])
     else:
         btn.append([
             InlineKeyboardButton("Prev", callback_data=f"topanimu_{gnr}_{int(page)-1}_{user}"),
             InlineKeyboardButton("Next", callback_data=f"topanimu_{gnr}_{int(page)+1}_{user}")
+        ])
+        btn.append([
+            InlineKeyboardButton("Menu", callback_data=f"menu"),
         ])
     return [msg, nsfw], InlineKeyboardMarkup(btn) if len(btn)!=0 else ""
 

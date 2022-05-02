@@ -289,6 +289,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         buttons.append([InlineKeyboardButton("More Info", url=result[1][2])])
     if media == "AIRING" and sfw == "False":
         buttons.append([InlineKeyboardButton("More Info", url=result[1][0])])
+        button.append([InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}')])
     name = None
     if media=="ANIME":
         name = (result[1] if len(result)>3 else result[1][0]).split("\n")[0].split(" ", 1)[1].replace("`", "")
