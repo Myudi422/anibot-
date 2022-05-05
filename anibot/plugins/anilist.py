@@ -903,8 +903,8 @@ async def additional_info_btn(client: Client, cq: CallbackQuery, cdata: dict):
     if kek=='desc':
         btnlist = []
         if cq.message.chat.type == "private":
-            btnlist.append(InlineKeyboardButton(text="⎆ Main Menu", callback_data=f'fitur {query}'))
-        btnlist.append(InlineKeyboardButton(text="⌘ Report", url=f"https://t.me/otakuindonew")),btnlist.append(InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}'))
+            btnlist.append(InlineKeyboardButton(text="Main Menu", callback_data=f'fitur {query}'))
+        btnlist.append(InlineKeyboardButton(text="Lapor", url=f"https://t.me/otakuindonew")),btnlist.append(InlineKeyboardButton(text="⌧ Hapus", callback_data=f'neko_delete, {user}'))
         button.append(btnlist) 
     if kek=='char':
         btndata = rjsdata[2]
