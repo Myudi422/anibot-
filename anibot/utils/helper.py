@@ -299,10 +299,7 @@ def get_btns(media, user: int, result: list, lsqry: str = None, lspage: int = No
         # Tombol Download Guest.
     else:
         if media=="ANIME" and sfw == "False":
-            btnlist = []
-            if cq.message.chat.type == "private":
-               btnlist.append([InlineKeyboardButton("Unduh", switch_inline_query_current_chat=name)])
-            button.append(btnlist)   
+            buttons.append([InlineKeyboardButton("Unduh", switch_inline_query_current_chat=name)])
             
     if len(result)>3:
         if result[3] == "None":
@@ -340,10 +337,7 @@ def get_auth_btns(media, user, data, name, lsqry: str = None, lspage: int = None
     else:
         btn.append(InlineKeyboardButton(text="⨭ Ke Fav" if data[3] is not True else "⨪ dari Fav", callback_data=f"fav_{media}_{data[0]}{qry}{pg}_{user}"))
         if media=="ANIME":
-            btnlist = []
-            if cq.message.chat.type == "private":
-               btnlist.append([InlineKeyboardButton("Unduh", switch_inline_query_current_chat=name)])
-            button.append(btnlist)  
+            btn.append(InlineKeyboardButton("Unduh", switch_inline_query_current_chat=name))
             
         btn.append(InlineKeyboardButton(
             text="⨮ Ke List" if data[1] is False else "Ganti List",
